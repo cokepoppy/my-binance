@@ -193,95 +193,9 @@
                     </div>
                 </div>
 
-                <!-- Trading Panel -->
+                <!-- Trading Panel (sticky with form first) -->
                 <div class="trading-panel">
-                    <!-- Order Book -->
-                    <div class="order-book">
-                        <div class="order-book-header">
-                            <h3>Order Book</h3>
-                            <div class="depth-toggle">
-                                <button class="depth-btn active" data-depth="10">10</button>
-                                <button class="depth-btn" data-depth="25">25</button>
-                                <button class="depth-btn" data-depth="50">50</button>
-                                <button class="depth-btn" data-depth="100">100</button>
-                            </div>
-                        </div>
-                        <div class="order-book-content">
-                            <!-- Asks (Sell Orders) -->
-                            <div class="order-book-section asks">
-                                <div class="section-title">Asks</div>
-                                <div class="order-list" id="asksList">
-                                    <div class="order-row">
-                                        <span class="price sell">43,260.00</span>
-                                        <span class="amount">0.2345</span>
-                                        <span class="total">10,145.67</span>
-                                    </div>
-                                    <div class="order-row">
-                                        <span class="price sell">43,259.50</span>
-                                        <span class="amount">0.1567</span>
-                                        <span class="total">6,782.35</span>
-                                    </div>
-                                    <div class="order-row">
-                                        <span class="price sell">43,259.00</span>
-                                        <span class="amount">0.2890</span>
-                                        <span class="total">12,495.51</span>
-                                    </div>
-                                    <div class="order-row">
-                                        <span class="price sell">43,258.50</span>
-                                        <span class="amount">0.1234</span>
-                                        <span class="total">5,339.89</span>
-                                    </div>
-                                    <div class="order-row">
-                                        <span class="price sell">43,258.00</span>
-                                        <span class="amount">0.4567</span>
-                                        <span class="total">19,761.06</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Spread -->
-                            <div class="spread-info">
-                                <div class="spread-price">
-                                    <span class="spread-label">Spread</span>
-                                    <span class="spread-value">$1.50</span>
-                                </div>
-                            </div>
-
-                            <!-- Bids (Buy Orders) -->
-                            <div class="order-book-section bids">
-                                <div class="section-title">Bids</div>
-                                <div class="order-list" id="bidsList">
-                                    <div class="order-row">
-                                        <span class="price buy">43,256.50</span>
-                                        <span class="amount">0.3456</span>
-                                        <span class="total">14,950.22</span>
-                                    </div>
-                                    <div class="order-row">
-                                        <span class="price buy">43,256.00</span>
-                                        <span class="amount">0.2345</span>
-                                        <span class="total">10,145.67</span>
-                                    </div>
-                                    <div class="order-row">
-                                        <span class="price buy">43,255.50</span>
-                                        <span class="amount">0.1567</span>
-                                        <span class="total">6,782.35</span>
-                                    </div>
-                                    <div class="order-row">
-                                        <span class="price buy">43,255.00</span>
-                                        <span class="amount">0.2890</span>
-                                        <span class="total">12,495.51</span>
-                                    </div>
-                                    <div class="order-row">
-                                        <span class="price buy">43,254.50</span>
-                                        <span class="amount">0.1234</span>
-                                        <span class="total">5,339.89</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Trading Form -->
+                    <!-- Trading Form (moved above order book) -->
                     <div class="trading-form">
                         <div class="form-tabs">
                             <button class="tab-btn active" data-tab="limit">Limit</button>
@@ -438,6 +352,94 @@
                         </div>
                     </div>
 
+                    <!-- Order Book -->
+                    <div class="order-book">
+                        <div class="order-book-header">
+                            <h3>Order Book</h3>
+                            <div class="depth-toggle">
+                                <button class="depth-btn active" data-depth="10">10</button>
+                                <button class="depth-btn" data-depth="25">25</button>
+                                <button class="depth-btn" data-depth="50">50</button>
+                                <button class="depth-btn" data-depth="100">100</button>
+                            </div>
+                        </div>
+                        <div class="order-book-content">
+                            <!-- Asks (Sell Orders) -->
+                            <div class="order-book-section asks">
+                                <div class="section-title">Asks</div>
+                                <div class="order-list" id="asksList">
+                                    <div class="order-row">
+                                        <span class="price sell">43,260.00</span>
+                                        <span class="amount">0.2345</span>
+                                        <span class="total">10,145.67</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price sell">43,259.50</span>
+                                        <span class="amount">0.1567</span>
+                                        <span class="total">6,782.35</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price sell">43,259.00</span>
+                                        <span class="amount">0.2890</span>
+                                        <span class="total">12,495.51</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price sell">43,258.50</span>
+                                        <span class="amount">0.1234</span>
+                                        <span class="total">5,339.89</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price sell">43,258.00</span>
+                                        <span class="amount">0.4567</span>
+                                        <span class="total">19,761.06</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Spread -->
+                            <div class="spread-info">
+                                <div class="spread-price">
+                                    <span class="spread-label">Spread</span>
+                                    <span class="spread-value">$1.50</span>
+                                </div>
+                            </div>
+
+                            <!-- Bids (Buy Orders) -->
+                            <div class="order-book-section bids">
+                                <div class="section-title">Bids</div>
+                                <div class="order-list" id="bidsList">
+                                    <div class="order-row">
+                                        <span class="price buy">43,256.50</span>
+                                        <span class="amount">0.3456</span>
+                                        <span class="total">14,950.22</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price buy">43,256.00</span>
+                                        <span class="amount">0.2345</span>
+                                        <span class="total">10,145.67</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price buy">43,255.50</span>
+                                        <span class="amount">0.1567</span>
+                                        <span class="total">6,782.35</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price buy">43,255.00</span>
+                                        <span class="amount">0.2890</span>
+                                        <span class="total">12,495.51</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price buy">43,254.50</span>
+                                        <span class="amount">0.1234</span>
+                                        <span class="total">5,339.89</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trading Form (removed duplicate) -->
+
                     <!-- Open Orders -->
                     <div class="open-orders">
                         <div class="section-header">
@@ -588,7 +590,6 @@
                 enable_publishing: false,
                 hide_top_toolbar: false,
                 hide_legend: false,
-                studies: ['Volume@tv-basicstudies'],
                 container_id: 'tvchart'
               });
               // on ready: hide fallback canvas and mark ready

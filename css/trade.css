@@ -718,6 +718,9 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     overflow: hidden;
+    position: relative;
+    /* reserve space for sticky buttons so they don't overlap content */
+    padding-bottom: 84px;
 }
 
 .form-tabs {
@@ -1212,4 +1215,26 @@
 
 .order-row:hover::before {
     width: 100%;
+}
+.trading-panel {
+    position: sticky;
+    top: 88px; /* below sticky header */
+    align-self: start;
+    max-height: calc(100vh - 104px);
+    overflow: auto;
+    padding-right: 4px; /* room for scrollbar */
+}
+
+.trading-form .order-buttons {
+    position: sticky;
+    bottom: 0;
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-md);
+    z-index: 2;
+}
+
+.trading-form .order-buttons .btn-buy,
+.trading-form .order-buttons .btn-sell {
+    flex: 1;
 }
