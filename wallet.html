@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet - Binance Clone</title>
+    <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/wallet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Binance</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="markets.html" class="nav-link">Markets</a></li>
+                        <li><a href="trade.html" class="nav-link">Trade</a></li>
+                        <li><a href="futures.html" class="nav-link">Futures</a></li>
+                        <li><a href="earn.html" class="nav-link">Earn</a></li>
+                        <li><a href="wallet.html" class="nav-link active">Wallet</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="support.html" class="nav-link">Support</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="language-selector" type="button">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <button class="btn-login" type="button">Log In</button>
+                    <button class="btn-register" type="button">Register</button>
+                    <button class="btn-wallet" type="button" style="display:none">
+                        <i class="fas fa-user"></i> 我的
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Wallet Hero Section -->
+    <section class="wallet-hero">
+        <div class="container">
+            <div class="wallet-overview">
+                <div class="total-balance">
+                    <h2>Total Balance</h2>
+                    <div class="balance-amount">
+                        <span class="total-value" id="totalBalance">$45,234.56</span>
+                        <span class="balance-change positive" id="balanceChange">+2.34%</span>
+                    </div>
+                </div>
+                <div class="wallet-actions">
+                    <button class="btn-primary" onclick="showModal('depositModal')">
+                        <i class="fas fa-plus"></i> Deposit
+                    </button>
+                    <button class="btn-secondary" onclick="showModal('withdrawModal')">
+                        <i class="fas fa-minus"></i> Withdraw
+                    </button>
+                    <button class="btn-outline" onclick="showModal('transferModal')">
+                        <i class="fas fa-exchange-alt"></i> Transfer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wallet Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="wallet-container">
+                <!-- Wallet Tabs -->
+                <div class="wallet-tabs">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="spot">Spot</button>
+                    <button class="tab-btn" data-tab="margin">Margin</button>
+                    <button class="tab-btn" data-tab="futures">Futures</button>
+                    <button class="tab-btn" data-tab="earn">Earn</button>
+                    <button class="tab-btn" data-tab="nft">NFT</button>
+                </div>
+
+                <!-- Overview Tab -->
+                <div class="tab-content active" id="overview-tab">
+                    <div class="wallet-grid">
+                        <!-- Assets Summary -->
+                        <div class="wallet-section">
+                            <div class="section-header">
+                                <h3>Assets</h3>
+                                <div class="section-actions">
+                                    <button class="icon-btn" onclick="toggleView('assets')">
+                                        <i class="fas fa-th"></i>
+                                    </button>
+                                    <button class="icon-btn" onclick="showModal('addAssetModal')">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="assets-list" id="assetsList">
+                                <!-- Assets will be populated here -->
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="wallet-section">
+                            <div class="section-header">
+                                <h3>Quick Actions</h3>
+                            </div>
+                            <div class="quick-actions">
+                                <div class="action-card" onclick="showModal('buyCryptoModal')">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <h4>Buy Crypto</h4>
+                                    <p>Buy with credit card</p>
+                                </div>
+                                <div class="action-card" onclick="showModal('sellCryptoModal')">
+                                    <i class="fas fa-coins"></i>
+                                    <h4>Sell Crypto</h4>
+                                    <p>Sell for fiat</p>
+                                </div>
+                                <div class="action-card" onclick="showModal('convertModal')">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <h4>Convert</h4>
+                                    <p>Instant conversion</p>
+                                </div>
+                                <div class="action-card" onclick="showModal('stakingModal')">
+                                    <i class="fas fa-lock"></i>
+                                    <h4>Staking</h4>
+                                    <p>Earn rewards</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Transactions -->
+                        <div class="wallet-section">
+                            <div class="section-header">
+                                <h3>Recent Transactions</h3>
+                                <a href="#" class="view-all">View All</a>
+                            </div>
+                            <div class="transactions-list" id="transactionsList">
+                                <!-- Transactions will be populated here -->
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Distribution -->
+                        <div class="wallet-section">
+                            <div class="section-header">
+                                <h3>Portfolio Distribution</h3>
+                            </div>
+                            <div class="portfolio-chart">
+                                <canvas id="portfolioChart" width="400" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spot Tab -->
+                <div class="tab-content" id="spot-tab">
+                    <div class="wallet-section">
+                        <div class="section-header">
+                            <h3>Spot Wallet</h3>
+                            <div class="section-actions">
+                                <button class="btn-sm" onclick="showModal('depositModal')">Deposit</button>
+                                <button class="btn-sm" onclick="showModal('withdrawModal')">Withdraw</button>
+                            </div>
+                        </div>
+                        <div class="spot-balances" id="spotBalances">
+                            <!-- Spot balances will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Margin Tab -->
+                <div class="tab-content" id="margin-tab">
+                    <div class="wallet-section">
+                        <div class="section-header">
+                            <h3>Margin Wallet</h3>
+                            <div class="section-actions">
+                                <button class="btn-sm" onclick="showModal('transferModal')">Transfer</button>
+                            </div>
+                        </div>
+                        <div class="margin-balances" id="marginBalances">
+                            <!-- Margin balances will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Futures Tab -->
+                <div class="tab-content" id="futures-tab">
+                    <div class="wallet-section">
+                        <div class="section-header">
+                            <h3>Futures Wallet</h3>
+                            <div class="section-actions">
+                                <button class="btn-sm" onclick="showModal('transferModal')">Transfer</button>
+                            </div>
+                        </div>
+                        <div class="futures-balances" id="futuresBalances">
+                            <!-- Futures balances will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Deposit Modal -->
+    <div id="depositModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('depositModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Deposit Funds</h2>
+                <button class="close-btn" onclick="closeModal('depositModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="deposit-methods">
+                    <div class="method-card" onclick="selectDepositMethod('crypto')">
+                        <i class="fab fa-bitcoin"></i>
+                        <h4>Cryptocurrency</h4>
+                        <p>Deposit crypto to your wallet</p>
+                    </div>
+                    <div class="method-card" onclick="selectDepositMethod('fiat')">
+                        <i class="fas fa-credit-card"></i>
+                        <h4>Fiat Currency</h4>
+                        <p>Deposit via bank transfer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Withdraw Modal -->
+    <div id="withdrawModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('withdrawModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Withdraw Funds</h2>
+                <button class="close-btn" onclick="closeModal('withdrawModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="withdrawForm">
+                    <div class="form-group">
+                        <label for="withdrawAsset">Asset</label>
+                        <select id="withdrawAsset" required>
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="USDT">Tether (USDT)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="withdrawAmount">Amount</label>
+                        <input type="number" id="withdrawAmount" step="0.00000001" required>
+                        <small>Available: <span id="availableBalance">0.00000000</span></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="withdrawAddress">Address</label>
+                        <input type="text" id="withdrawAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="withdrawNetwork">Network</label>
+                        <select id="withdrawNetwork" required>
+                            <option value="BTC">Bitcoin</option>
+                            <option value="ETH">Ethereum</option>
+                            <option value="BSC">Binance Smart Chain</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Withdraw</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transfer Modal -->
+    <div id="transferModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('transferModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Transfer Funds</h2>
+                <button class="close-btn" onclick="closeModal('transferModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="transferForm">
+                    <div class="form-group">
+                        <label for="transferFrom">From</label>
+                        <select id="transferFrom" required>
+                            <option value="spot">Spot Wallet</option>
+                            <option value="margin">Margin Wallet</option>
+                            <option value="futures">Futures Wallet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transferTo">To</label>
+                        <select id="transferTo" required>
+                            <option value="spot">Spot Wallet</option>
+                            <option value="margin">Margin Wallet</option>
+                            <option value="futures">Futures Wallet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transferAsset">Asset</label>
+                        <select id="transferAsset" required>
+                            <option value="USDT">USDT</option>
+                            <option value="BTC">BTC</option>
+                            <option value="ETH">ETH</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transferAmount">Amount</label>
+                        <input type="number" id="transferAmount" step="0.00000001" required>
+                        <small>Available: <span id="transferAvailable">0.00000000</span></small>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Transfer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buy Crypto Modal -->
+    <div id="buyCryptoModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('buyCryptoModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Buy Cryptocurrency</h2>
+                <button class="close-btn" onclick="closeModal('buyCryptoModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="buyCryptoForm">
+                    <div class="form-group">
+                        <label for="buyCrypto">Cryptocurrency</label>
+                        <select id="buyCrypto" required>
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="BNB">Binance Coin (BNB)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="buyAmount">Amount (USD)</label>
+                        <input type="number" id="buyAmount" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod" required>
+                            <option value="card">Credit Card</option>
+                            <option value="bank">Bank Transfer</option>
+                            <option value="paypal">PayPal</option>
+                        </select>
+                    </div>
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span>Rate:</span>
+                            <span id="buyRate">$43,256.78</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Fee:</span>
+                            <span id="buyFee">$5.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="buyTotal">$0.00</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Buy Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('loginModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Log In</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        <span class="form-error" id="loginEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="toggle-password" aria-label="Show password" data-target="loginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="form-error" id="loginPasswordError"></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-auth">Log In</button>
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="social-login">
+                        <div id="googleSignIn" style="display:flex; justify-content:center;"></div>
+                    </div>
+                </form>
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('registerModal')"></div>
+        <div class="modal-content auth-modal">
+            <div class="modal-header">
+                <h2>Register Account</h2>
+                <button class="close-btn" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar"></div>
+                            <div class="strength-text">Password strength</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span>I agree to the Terms of Service</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Register</button>
+                </form>
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Business Contacts</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Exchange</a></li>
+                        <li><a href="#">Academy</a></li>
+                        <li><a href="#">Charity</a></li>
+                        <li><a href="#">Card</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Service</h4>
+                    <ul>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Desktop Application</a></li>
+                        <li><a href="#">Buy Crypto</a></li>
+                        <li><a href="#">Fees</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">24/7 Chat Support</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Product Feedback</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <h2>Binance</h2>
+                </div>
+                <div class="footer-links">
+                    <p>&copy; 2024 Binance Clone. Educational purposes only.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/wallet.js"></script>
+</body>
+</html>

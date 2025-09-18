@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Binance Clone</title>
+    <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header Navigation (same as index) -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Binance</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="markets.html" class="nav-link">Markets</a></li>
+                        <li><a href="trade.html" class="nav-link">Trade</a></li>
+                        <li><a href="futures.html" class="nav-link">Futures</a></li>
+                        <li><a href="earn.html" class="nav-link">Earn</a></li>
+                        <li><a href="wallet.html" class="nav-link">Wallet</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="support.html" class="nav-link">Support</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="language-selector" type="button">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <button class="btn-login" type="button">Log In</button>
+                    <button class="btn-register" type="button">Register</button>
+                    <button class="btn-wallet" type="button" style="display:none">
+                        <i class="fas fa-user"></i> 我的
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 32px 0;">
+        <h2 style="margin-bottom:16px;">My Account</h2>
+        <p class="text-secondary" style="color: var(--color-text-secondary); margin-bottom:24px;">View and manage your profile.</p>
+
+        <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px;">
+            <section style="background: var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:12px; padding:24px;">
+                <h3 style="margin-bottom:16px;">Profile</h3>
+                <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
+                    <div class="user-avatar" style="width:56px; height:56px;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <div id="accName" style="font-weight:600;">—</div>
+                        <div id="accEmail" style="color: var(--color-text-secondary); font-size:14px;">—</div>
+                    </div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+                    <div>
+                        <div style="color: var(--color-text-secondary); font-size:12px;">User ID</div>
+                        <div id="accId">—</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--color-text-secondary); font-size:12px;">2FA</div>
+                        <div id="acc2fa">—</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--color-text-secondary); font-size:12px;">Created</div>
+                        <div id="accCreated">—</div>
+                    </div>
+                </div>
+
+                <div style="border-top:1px solid var(--color-border); padding-top:16px; display:grid; gap:12px;">
+                    <div class="form-group" style="display:grid; gap:8px;">
+                        <label for="accNameInput" style="color: var(--color-text-secondary); font-size:12px;">Display Name</label>
+                        <input id="accNameInput" type="text" placeholder="Enter your display name" style="
+                            background: var(--color-bg);
+                            border: 1px solid var(--color-border);
+                            color: var(--color-text-primary);
+                            border-radius: 8px; padding: 10px 12px; outline: none;">
+                    </div>
+                    <div>
+                        <button id="btnSaveProfile" class="btn-primary">Save Changes</button>
+                        <span id="profileSaveStatus" style="margin-left:10px; color: var(--color-text-secondary); font-size: 12px;"></span>
+                    </div>
+                </div>
+            </section>
+
+            <aside style="background: var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:12px; padding:24px;">
+                <h3 style="margin-bottom:16px;">Actions</h3>
+                <button id="btnGotoTrade" class="btn-primary" style="width:100%; margin-bottom:12px;">Open Trading</button>
+                <button id="btnLogout" class="btn-secondary" style="width:100%;">Log Out</button>
+            </aside>
+        </div>
+    </main>
+
+    <!-- User Menu Dropdown (reused) -->
+    <div id="userMenu" class="user-menu">
+        <div class="user-menu-header">
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="user-info">
+                <div class="user-name" id="userName">User Name</div>
+                <div class="user-email" id="userEmail">user@email.com</div>
+            </div>
+        </div>
+        <div class="user-menu-items">
+            <a href="account.html" class="menu-item">
+                <i class="fas fa-user-circle"></i>
+                My Page
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-wallet"></i>
+                Wallet
+            </a>
+            <div class="menu-divider"></div>
+            <a href="#" class="menu-item" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Log Out
+            </a>
+        </div>
+    </div>
+
+    <!-- Modals (reuse auth modals from index if needed in future) -->
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/account.js"></script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Binance Clone</title>
+    <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/support.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Binance</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="markets.html" class="nav-link">Markets</a></li>
+                        <li><a href="trade.html" class="nav-link">Trade</a></li>
+                        <li><a href="futures.html" class="nav-link">Futures</a></li>
+                        <li><a href="earn.html" class="nav-link">Earn</a></li>
+                        <li><a href="wallet.html" class="nav-link">Wallet</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="support.html" class="nav-link active">Support</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="language-selector" type="button">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <button class="btn-login" type="button">Log In</button>
+                    <button class="btn-register" type="button">Register</button>
+                    <button class="btn-wallet" type="button" style="display:none">
+                        <i class="fas fa-user"></i> 我的
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Support Hero Section -->
+    <section class="support-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>How can we help you?</h1>
+                <p>Our support team is here to assist you 24/7</p>
+                <div class="search-bar large">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for help articles, FAQs, and more...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <div class="action-card" onclick="startLiveChat()">
+                    <i class="fas fa-comments"></i>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our support team instantly</p>
+                    <span class="status online">Online Now</span>
+                </div>
+                <div class="action-card" onclick="submitTicket()">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h3>Submit Ticket</h3>
+                    <p>Create a support ticket for detailed assistance</p>
+                    <span class="status">24/7 Support</span>
+                </div>
+                <div class="action-card" onclick="callSupport()">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone Support</h3>
+                    <p>Call our support hotline</p>
+                    <span class="status">Mon-Fri 9AM-6PM</span>
+                </div>
+            </div>
+
+            <!-- Help Categories -->
+            <div class="help-categories">
+                <h2>Popular Help Topics</h2>
+                <div class="categories-grid">
+                    <div class="category-card" onclick="showCategory('account')">
+                        <i class="fas fa-user-circle"></i>
+                        <h3>Account & Security</h3>
+                        <p>Login, 2FA, verification, and account security</p>
+                        <div class="category-stats">
+                            <span>156 articles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showCategory('trading')">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Trading & Fees</h3>
+                        <p>How to trade, fee structure, and trading limits</p>
+                        <div class="category-stats">
+                            <span>234 articles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showCategory('deposit')">
+                        <i class="fas fa-download"></i>
+                        <h3>Deposits & Withdrawals</h3>
+                        <p>How to deposit and withdraw cryptocurrencies</p>
+                        <div class="category-stats">
+                            <span>189 articles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showCategory('wallet')">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Wallet Management</h3>
+                        <p>Managing your crypto wallet and balances</p>
+                        <div class="category-stats">
+                            <span>145 articles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showCategory('security')">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Security</h3>
+                        <p>Security best practices and protection</p>
+                        <div class="category-stats">
+                            <span>98 articles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showCategory('api')">
+                        <i class="fas fa-code"></i>
+                        <h3>API & Developers</h3>
+                        <p>API documentation and developer resources</p>
+                        <div class="category-stats">
+                            <span>267 articles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How do I create a Binance account?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Creating a Binance account is simple. Click on the "Register" button in the top right corner, fill in your email address, create a strong password, and complete the verification process. You'll need to verify your email and enable two-factor authentication for security.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How long does a deposit take to process?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Deposit processing times vary by cryptocurrency and network conditions. Typically, Bitcoin deposits take 10-60 minutes, Ethereum deposits take 5-20 minutes, and other altcoins may vary. Network congestion can affect processing times.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What are the trading fees on Binance?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Binance charges a standard 0.1% trading fee for both makers and takers. Fees can be reduced by holding BNB (Binance Coin) in your account. VIP users with high trading volumes enjoy lower fee tiers starting from 0.02%.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How do I enable two-factor authentication?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To enable 2FA, go to your account settings, click on "Security", and select "Two-Factor Authentication". Download an authenticator app like Google Authenticator, scan the QR code, and save your backup key in a safe place.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is the minimum deposit amount?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Minimum deposit amounts vary by cryptocurrency. For Bitcoin, it's 0.0001 BTC, for Ethereum it's 0.001 ETH, and for USDT it's 1 USDT. Always check the deposit page for the most current minimum amounts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Support -->
+            <div class="contact-support">
+                <h2>Still need help?</h2>
+                <div class="contact-options">
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Support</h3>
+                        <p>support@binance.com</p>
+                        <p>Response time: 24-48 hours</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-comments"></i>
+                        <h3>Live Chat</h3>
+                        <p>Available 24/7</p>
+                        <p>Average wait time: 2-5 minutes</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone Support</h3>
+                        <p>+1 (555) 123-4567</p>
+                        <p>Mon-Fri 9AM-6PM EST</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Forum -->
+            <div class="community-forum">
+                <h2>Join the Community</h2>
+                <div class="forum-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h3>2.5M+ Members</h3>
+                            <p>Active community members</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-comments"></i>
+                        <div>
+                            <h3>50K+ Discussions</h3>
+                            <p>Helpful community threads</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h3>95% Success Rate</h3>
+                            <p>Issues resolved by community</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="forum-actions">
+                    <button class="btn-primary" onclick="joinCommunity()">Join Community</button>
+                    <button class="btn-secondary" onclick="browseForum()">Browse Forum</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('loginModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Log In</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        <span class="form-error" id="loginEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="toggle-password" aria-label="Show password" data-target="loginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="form-error" id="loginPasswordError"></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-auth">Log In</button>
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="social-login">
+                        <div id="googleSignIn" style="display:flex; justify-content:center;"></div>
+                    </div>
+                </form>
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('registerModal')"></div>
+        <div class="modal-content auth-modal">
+            <div class="modal-header">
+                <h2>Register Account</h2>
+                <button class="close-btn" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar"></div>
+                            <div class="strength-text">Password strength</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span>I agree to the Terms of Service</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Register</button>
+                </form>
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Business Contacts</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Exchange</a></li>
+                        <li><a href="#">Academy</a></li>
+                        <li><a href="#">Charity</a></li>
+                        <li><a href="#">Card</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Service</h4>
+                    <ul>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Desktop Application</a></li>
+                        <li><a href="#">Buy Crypto</a></li>
+                        <li><a href="#">Fees</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">24/7 Chat Support</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Product Feedback</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <h2>Binance</h2>
+                </div>
+                <div class="footer-links">
+                    <p>&copy; 2024 Binance Clone. Educational purposes only.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/support.js"></script>
+</body>
+</html>

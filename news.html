@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - Binance Clone</title>
+    <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Binance</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="markets.html" class="nav-link">Markets</a></li>
+                        <li><a href="trade.html" class="nav-link">Trade</a></li>
+                        <li><a href="futures.html" class="nav-link">Futures</a></li>
+                        <li><a href="earn.html" class="nav-link">Earn</a></li>
+                        <li><a href="wallet.html" class="nav-link">Wallet</a></li>
+                        <li><a href="news.html" class="nav-link active">News</a></li>
+                        <li><a href="support.html" class="nav-link">Support</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="language-selector" type="button">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <button class="btn-login" type="button">Log In</button>
+                    <button class="btn-register" type="button">Register</button>
+                    <button class="btn-wallet" type="button" style="display:none">
+                        <i class="fas fa-user"></i> 我的
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- News Hero Section -->
+    <section class="news-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Crypto News & Updates</h1>
+                <p>Stay informed with the latest cryptocurrency news and market insights</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="news-container">
+                <!-- Featured Article -->
+                <div class="featured-article">
+                    <div class="article-content">
+                        <span class="article-tag featured">Featured</span>
+                        <h1>Bitcoin Reaches New All-Time High as Institutional Adoption Accelerates</h1>
+                        <p class="article-excerpt">Bitcoin has surged past $45,000 for the first time in history, driven by increased institutional adoption and growing mainstream acceptance...</p>
+                        <div class="article-meta">
+                            <span class="author">By Sarah Johnson</span>
+                            <span class="date">January 15, 2024</span>
+                            <span class="read-time">5 min read</span>
+                        </div>
+                        <button class="btn-primary">Read Full Article</button>
+                    </div>
+                    <div class="article-image">
+                        <img src="https://picsum.photos/seed/bitcoin-news/600/400.jpg" alt="Bitcoin News">
+                    </div>
+                </div>
+
+                <!-- News Categories -->
+                <div class="news-categories">
+                    <button class="category-btn active" data-category="all">All News</button>
+                    <button class="category-btn" data-category="market">Market Analysis</button>
+                    <button class="category-btn" data-category="regulation">Regulation</button>
+                    <button class="category-btn" data-category="technology">Technology</button>
+                    <button class="category-btn" data-category="defi">DeFi</button>
+                    <button class="category-btn" data-category="nft">NFT</button>
+                </div>
+
+                <!-- News Grid -->
+                <div class="news-grid">
+                    <!-- News Article 1 -->
+                    <article class="news-card" data-category="market">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/ethereum-upgrade/400/250.jpg" alt="Ethereum Upgrade">
+                            <span class="article-tag">Market Analysis</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Ethereum 2.0 Upgrade Shows Promising Results</h3>
+                            <p class="card-excerpt">The latest Ethereum network upgrade demonstrates significant improvements in scalability and energy efficiency...</p>
+                            <div class="card-meta">
+                                <span class="date">January 14, 2024</span>
+                                <span class="read-time">3 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- News Article 2 -->
+                    <article class="news-card" data-category="regulation">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/crypto-regulation/400/250.jpg" alt="Crypto Regulation">
+                            <span class="article-tag">Regulation</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>EU Approves Comprehensive Crypto Regulatory Framework</h3>
+                            <p class="card-excerpt">The European Union has voted to implement new regulations that provide clear guidelines for cryptocurrency operations...</p>
+                            <div class="card-meta">
+                                <span class="date">January 13, 2024</span>
+                                <span class="read-time">4 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- News Article 3 -->
+                    <article class="news-card" data-category="defi">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/defi-platform/400/250.jpg" alt="DeFi Platform">
+                            <span class="article-tag">DeFi</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>DeFi Platform Announces Record-Breaking Yield Farming Opportunities</h3>
+                            <p class="card-excerpt">A leading decentralized finance platform introduces new mechanisms for users to earn higher yields on their crypto assets...</p>
+                            <div class="card-meta">
+                                <span class="date">January 12, 2024</span>
+                                <span class="read-time">6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- News Article 4 -->
+                    <article class="news-card" data-category="technology">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/blockchain-tech/400/250.jpg" alt="Blockchain Technology">
+                            <span class="article-tag">Technology</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Revolutionary Blockchain Technology Promises 100x Speed Improvement</h3>
+                            <p class="card-excerpt">A new blockchain protocol claims to achieve unprecedented transaction speeds while maintaining security and decentralization...</p>
+                            <div class="card-meta">
+                                <span class="date">January 11, 2024</span>
+                                <span class="read-time">5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- News Article 5 -->
+                    <article class="news-card" data-category="nft">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/nft-marketplace/400/250.jpg" alt="NFT Marketplace">
+                            <span class="article-tag">NFT</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>NFT Marketplace Sees Unprecedented Growth in Digital Art Sales</h3>
+                            <p class="card-excerpt">Digital art sales on major NFT marketplaces have reached new heights, with several pieces selling for millions...</p>
+                            <div class="card-meta">
+                                <span class="date">January 10, 2024</span>
+                                <span class="read-time">4 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- News Article 6 -->
+                    <article class="news-card" data-category="market">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/crypto-market/400/250.jpg" alt="Crypto Market">
+                            <span class="article-tag">Market Analysis</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>Crypto Market Cap Surpasses $2 Trillion Mark</h3>
+                            <p class="card-excerpt">The total cryptocurrency market capitalization has exceeded $2 trillion for the first time, signaling growing investor confidence...</p>
+                            <div class="card-meta">
+                                <span class="date">January 9, 2024</span>
+                                <span class="read-time">3 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Market Analysis Section -->
+                <div class="market-analysis">
+                    <h2>Market Analysis</h2>
+                    <div class="analysis-grid">
+                        <div class="analysis-card">
+                            <h3>BTC/USD Technical Analysis</h3>
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-line"></i>
+                                <p>Technical Chart</p>
+                            </div>
+                            <div class="analysis-summary">
+                                <p>Bitcoin shows strong bullish momentum with key resistance at $46,000. Technical indicators suggest continued upward trend.</p>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <h3>Market Sentiment</h3>
+                            <div class="sentiment-indicators">
+                                <div class="sentiment-item">
+                                    <span class="label">Fear & Greed Index:</span>
+                                    <span class="value greed">Greed (78)</span>
+                                </div>
+                                <div class="sentiment-item">
+                                    <span class="label">Market Cap Dominance:</span>
+                                    <span class="value">BTC: 48.5%</span>
+                                </div>
+                                <div class="sentiment-item">
+                                    <span class="label">Volume (24h):</span>
+                                    <span class="value">$234.5B</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter Subscription -->
+                <div class="newsletter-section">
+                    <div class="newsletter-content">
+                        <h2>Stay Updated</h2>
+                        <p>Subscribe to our newsletter for daily crypto news and market insights delivered to your inbox.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('loginModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Log In</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        <span class="form-error" id="loginEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="toggle-password" aria-label="Show password" data-target="loginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="form-error" id="loginPasswordError"></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-auth">Log In</button>
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="social-login">
+                        <div id="googleSignIn" style="display:flex; justify-content:center;"></div>
+                    </div>
+                </form>
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('registerModal')"></div>
+        <div class="modal-content auth-modal">
+            <div class="modal-header">
+                <h2>Register Account</h2>
+                <button class="close-btn" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar"></div>
+                            <div class="strength-text">Password strength</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span>I agree to the Terms of Service</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Register</button>
+                </form>
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Business Contacts</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Exchange</a></li>
+                        <li><a href="#">Academy</a></li>
+                        <li><a href="#">Charity</a></li>
+                        <li><a href="#">Card</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Service</h4>
+                    <ul>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Desktop Application</a></li>
+                        <li><a href="#">Buy Crypto</a></li>
+                        <li><a href="#">Fees</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">24/7 Chat Support</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Product Feedback</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <h2>Binance</h2>
+                </div>
+                <div class="footer-links">
+                    <p>&copy; 2024 Binance Clone. Educational purposes only.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/news.js"></script>
+</body>
+</html>

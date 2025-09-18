@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade BTC/USDT - Binance Clone</title>
+    <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/trade.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Binance</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="markets.html" class="nav-link">Markets</a></li>
+                        <li><a href="trade.html" class="nav-link active">Trade</a></li>
+                        <li><a href="futures.html" class="nav-link">Futures</a></li>
+                        <li><a href="earn.html" class="nav-link">Earn</a></li>
+                        <li><a href="wallet.html" class="nav-link">Wallet</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="support.html" class="nav-link">Support</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="language-selector" type="button">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <button class="btn-login" type="button">Log In</button>
+                    <button class="btn-register" type="button">Register</button>
+                    <button class="btn-wallet" type="button" style="display:none">
+                        <i class="fas fa-user"></i> 我的
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trading Interface -->
+    <main class="trading-interface">
+        <div class="container">
+            <!-- Trading Pair Header -->
+            <div class="trading-header">
+                <div class="pair-info">
+                    <div class="pair-main">
+                        <div class="pair-icons">
+                            <div class="coin-icon btc">BTC</div>
+                            <i class="fas fa-exchange-alt"></i>
+                            <div class="coin-icon usdt">USDT</div>
+                        </div>
+                        <div class="pair-details">
+                            <h2>BTC/USDT</h2>
+                            <div class="pair-price">
+                                <span class="current-price">$43,256.78</span>
+                                <span class="price-change positive">+$987.23 (+2.34%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pair-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">24h Change</span>
+                            <span class="stat-value positive">+2.34%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">24h High</span>
+                            <span class="stat-value">$44,125.50</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">24h Low</span>
+                            <span class="stat-value">$42,100.00</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">24h Volume</span>
+                            <span class="stat-value">$28.5B</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pair-actions">
+                    <div class="timeframes">
+                        <button class="timeframe-btn active" data-timeframe="1m">1m</button>
+                        <button class="timeframe-btn" data-timeframe="5m">5m</button>
+                        <button class="timeframe-btn" data-timeframe="15m">15m</button>
+                        <button class="timeframe-btn" data-timeframe="1h">1h</button>
+                        <button class="timeframe-btn" data-timeframe="4h">4h</button>
+                        <button class="timeframe-btn" data-timeframe="1d">1d</button>
+                    </div>
+                    <div class="chart-tools">
+                        <button class="tool-btn" title="Indicators">
+                            <i class="fas fa-chart-line"></i>
+                        </button>
+                        <button class="tool-btn" title="Drawing Tools">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button class="tool-btn" title="Fullscreen">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Trading Area -->
+            <div class="trading-grid">
+                <!-- Chart Section -->
+                <div class="chart-section">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <div class="chart-title">
+                                <span>Bitcoin / TetherUS</span>
+                                <span class="chart-timeframe">1D</span>
+                            </div>
+                            <div class="chart-controls">
+                                <button class="chart-btn">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-main">
+                            <!-- TradingView widget container (preferred) -->
+                            <div id="tvchart" style="width:100%; height:420px;"></div>
+                            <!-- Fallback canvas if TradingView script unavailable -->
+                            <canvas id="priceChart" width="800" height="400"></canvas>
+                            <div class="chart-loading" id="chartLoading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                Loading chart...
+                            </div>
+                        </div>
+                        <div class="chart-footer">
+                            <div class="volume-bars">
+                                <div class="volume-bar" style="height: 60%"></div>
+                                <div class="volume-bar" style="height: 80%"></div>
+                                <div class="volume-bar" style="height: 45%"></div>
+                                <div class="volume-bar" style="height: 90%"></div>
+                                <div class="volume-bar" style="height: 70%"></div>
+                                <div class="volume-bar" style="height: 55%"></div>
+                                <div class="volume-bar" style="height: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trade History -->
+                    <div class="trade-history">
+                        <div class="section-header">
+                            <h3>Trade History</h3>
+                            <div class="history-filters">
+                                <button class="filter-btn active">All</button>
+                                <button class="filter-btn">Buy</button>
+                                <button class="filter-btn">Sell</button>
+                            </div>
+                        </div>
+                        <div class="history-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Price</th>
+                                        <th>Amount</th>
+                                        <th>Total</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tradeHistoryBody">
+                                    <tr class="buy">
+                                        <td class="price">43,250.00</td>
+                                        <td class="amount">0.0234</td>
+                                        <td class="total">1,012.05</td>
+                                        <td class="time">12:34:56</td>
+                                    </tr>
+                                    <tr class="sell">
+                                        <td class="price">43,248.50</td>
+                                        <td class="amount">0.0156</td>
+                                        <td class="total">674.69</td>
+                                        <td class="time">12:34:45</td>
+                                    </tr>
+                                    <tr class="buy">
+                                        <td class="price">43,245.00</td>
+                                        <td class="amount">0.0321</td>
+                                        <td class="total">1,388.15</td>
+                                        <td class="time">12:34:32</td>
+                                    </tr>
+                                    <tr class="sell">
+                                        <td class="price">43,242.75</td>
+                                        <td class="amount">0.0289</td>
+                                        <td class="total">1,249.75</td>
+                                        <td class="time">12:34:18</td>
+                                    </tr>
+                                    <tr class="buy">
+                                        <td class="price">43,240.00</td>
+                                        <td class="amount">0.0456</td>
+                                        <td class="total">1,971.74</td>
+                                        <td class="time">12:34:05</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trading Panel -->
+                <div class="trading-panel">
+                    <!-- Order Book -->
+                    <div class="order-book">
+                        <div class="order-book-header">
+                            <h3>Order Book</h3>
+                            <div class="depth-toggle">
+                                <button class="depth-btn active" data-depth="10">10</button>
+                                <button class="depth-btn" data-depth="25">25</button>
+                                <button class="depth-btn" data-depth="50">50</button>
+                                <button class="depth-btn" data-depth="100">100</button>
+                            </div>
+                        </div>
+                        <div class="order-book-content">
+                            <!-- Asks (Sell Orders) -->
+                            <div class="order-book-section asks">
+                                <div class="section-title">Asks</div>
+                                <div class="order-list" id="asksList">
+                                    <div class="order-row">
+                                        <span class="price sell">43,260.00</span>
+                                        <span class="amount">0.2345</span>
+                                        <span class="total">10,145.67</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price sell">43,259.50</span>
+                                        <span class="amount">0.1567</span>
+                                        <span class="total">6,782.35</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price sell">43,259.00</span>
+                                        <span class="amount">0.2890</span>
+                                        <span class="total">12,495.51</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price sell">43,258.50</span>
+                                        <span class="amount">0.1234</span>
+                                        <span class="total">5,339.89</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price sell">43,258.00</span>
+                                        <span class="amount">0.4567</span>
+                                        <span class="total">19,761.06</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Spread -->
+                            <div class="spread-info">
+                                <div class="spread-price">
+                                    <span class="spread-label">Spread</span>
+                                    <span class="spread-value">$1.50</span>
+                                </div>
+                            </div>
+
+                            <!-- Bids (Buy Orders) -->
+                            <div class="order-book-section bids">
+                                <div class="section-title">Bids</div>
+                                <div class="order-list" id="bidsList">
+                                    <div class="order-row">
+                                        <span class="price buy">43,256.50</span>
+                                        <span class="amount">0.3456</span>
+                                        <span class="total">14,950.22</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price buy">43,256.00</span>
+                                        <span class="amount">0.2345</span>
+                                        <span class="total">10,145.67</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price buy">43,255.50</span>
+                                        <span class="amount">0.1567</span>
+                                        <span class="total">6,782.35</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price buy">43,255.00</span>
+                                        <span class="amount">0.2890</span>
+                                        <span class="total">12,495.51</span>
+                                    </div>
+                                    <div class="order-row">
+                                        <span class="price buy">43,254.50</span>
+                                        <span class="amount">0.1234</span>
+                                        <span class="total">5,339.89</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trading Form -->
+                    <div class="trading-form">
+                        <div class="form-tabs">
+                            <button class="tab-btn active" data-tab="limit">Limit</button>
+                            <button class="tab-btn" data-tab="market">Market</button>
+                            <button class="tab-btn" data-tab="stop-limit">Stop-Limit</button>
+                        </div>
+
+                        <!-- Limit Order Form -->
+                        <div class="tab-content active" id="limit-tab">
+                            <form id="limitOrderForm">
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <div class="input-group">
+                                        <input type="number" id="limitPrice" step="0.01" placeholder="0.00" value="43256.78">
+                                        <span class="input-currency">USDT</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <div class="input-group">
+                                        <input type="number" id="limitAmount" step="0.00000001" placeholder="0.00000000">
+                                        <span class="input-currency">BTC</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Total</label>
+                                    <div class="input-group">
+                                        <input type="number" id="limitTotal" step="0.01" placeholder="0.00" readonly>
+                                        <span class="input-currency">USDT</span>
+                                    </div>
+                                </div>
+
+                                <div class="percentage-buttons">
+                                    <button type="button" class="percent-btn" data-percent="25">25%</button>
+                                    <button type="button" class="percent-btn" data-percent="50">50%</button>
+                                    <button type="button" class="percent-btn" data-percent="75">75%</button>
+                                    <button type="button" class="percent-btn" data-percent="100">100%</button>
+                                </div>
+
+                                <div class="balance-info">
+                                    <div class="balance-item">
+                                        <span>Available:</span>
+                                        <span id="availableUSDT">1,234.56 USDT</span>
+                                    </div>
+                                    <div class="balance-item">
+                                        <span>Est. Fee:</span>
+                                        <span id="limitFee">0.00 USDT</span>
+                                    </div>
+                                </div>
+
+                                <div class="order-buttons">
+                                    <button type="submit" class="btn-buy">Buy BTC</button>
+                                    <button type="submit" class="btn-sell">Sell BTC</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Market Order Form -->
+                        <div class="tab-content" id="market-tab">
+                            <form id="marketOrderForm">
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <div class="input-group">
+                                        <input type="number" id="marketAmount" step="0.00000001" placeholder="0.00000000">
+                                        <span class="input-currency">BTC</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Total</label>
+                                    <div class="input-group">
+                                        <input type="number" id="marketTotal" step="0.01" placeholder="0.00">
+                                        <span class="input-currency">USDT</span>
+                                    </div>
+                                </div>
+
+                                <div class="percentage-buttons">
+                                    <button type="button" class="percent-btn" data-percent="25">25%</button>
+                                    <button type="button" class="percent-btn" data-percent="50">50%</button>
+                                    <button type="button" class="percent-btn" data-percent="75">75%</button>
+                                    <button type="button" class="percent-btn" data-percent="100">100%</button>
+                                </div>
+
+                                <div class="balance-info">
+                                    <div class="balance-item">
+                                        <span>Available:</span>
+                                        <span id="availableUSDT2">1,234.56 USDT</span>
+                                    </div>
+                                    <div class="balance-item">
+                                        <span>Est. Fee:</span>
+                                        <span id="marketFee">0.00 USDT</span>
+                                    </div>
+                                </div>
+
+                                <div class="order-buttons">
+                                    <button type="submit" class="btn-buy">Buy BTC</button>
+                                    <button type="submit" class="btn-sell">Sell BTC</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Stop-Limit Order Form -->
+                        <div class="tab-content" id="stop-limit-tab">
+                            <form id="stopLimitOrderForm">
+                                <div class="form-group">
+                                    <label>Stop</label>
+                                    <div class="input-group">
+                                        <input type="number" id="stopPrice" step="0.01" placeholder="0.00">
+                                        <span class="input-currency">USDT</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Limit</label>
+                                    <div class="input-group">
+                                        <input type="number" id="stopLimitPrice" step="0.01" placeholder="0.00">
+                                        <span class="input-currency">USDT</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <div class="input-group">
+                                        <input type="number" id="stopLimitAmount" step="0.00000001" placeholder="0.00000000">
+                                        <span class="input-currency">BTC</span>
+                                    </div>
+                                </div>
+
+                                <div class="percentage-buttons">
+                                    <button type="button" class="percent-btn" data-percent="25">25%</button>
+                                    <button type="button" class="percent-btn" data-percent="50">50%</button>
+                                    <button type="button" class="percent-btn" data-percent="75">75%</button>
+                                    <button type="button" class="percent-btn" data-percent="100">100%</button>
+                                </div>
+
+                                <div class="balance-info">
+                                    <div class="balance-item">
+                                        <span>Available:</span>
+                                        <span id="availableUSDT3">1,234.56 USDT</span>
+                                    </div>
+                                    <div class="balance-item">
+                                        <span>Est. Fee:</span>
+                                        <span id="stopLimitFee">0.00 USDT</span>
+                                    </div>
+                                </div>
+
+                                <div class="order-buttons">
+                                    <button type="submit" class="btn-buy">Buy BTC</button>
+                                    <button type="submit" class="btn-sell">Sell BTC</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Open Orders -->
+                    <div class="open-orders">
+                        <div class="section-header">
+                            <h3>Open Orders</h3>
+                            <button class="cancel-all-btn">Cancel All</button>
+                        </div>
+                        <div class="orders-list" id="openOrdersList">
+                            <div class="no-orders">
+                                <i class="fas fa-clipboard-list"></i>
+                                <p>No open orders</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('loginModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Log In</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        <span class="form-error" id="loginEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="toggle-password" aria-label="Show password" data-target="loginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="form-error" id="loginPasswordError"></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-auth">Log In</button>
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="social-login">
+                        <div id="googleSignIn" style="display:flex; justify-content:center;"></div>
+                    </div>
+                </form>
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('registerModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sign Up</h2>
+                <button class="modal-close" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" name="email" required>
+                        <span class="form-error" id="registerEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" name="password" required>
+                        <span class="form-error" id="registerPasswordError"></span>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <span class="strength-text">Password strength</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <span class="form-error" id="confirmPasswordError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="referralCode">Referral Code (Optional)</label>
+                        <input type="text" id="referralCode" name="referralCode">
+                    </div>
+                    <div class="form-agree">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                        <span class="form-error" id="agreeTermsError"></span>
+                    </div>
+                    <button type="submit" class="btn-auth">Sign Up</button>
+                </form>
+                <div class="auth-switch">
+                    Already have an account? <a href="#" onclick="switchToLogin()">Log In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <!-- TradingView chart library -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        function initTV() {
+          var container = document.getElementById('tvchart');
+          if (!container) return;
+          if (window.TradingView && window.TradingView.widget) {
+            try {
+              new TradingView.widget({
+                autosize: true,
+                symbol: 'BINANCE:BTCUSDT',
+                interval: '15',
+                timezone: 'Etc/UTC',
+                theme: 'dark',
+                style: '1',
+                locale: 'en',
+                toolbar_bg: 'rgba(30,35,41,1)',
+                enable_publishing: false,
+                hide_top_toolbar: false,
+                hide_legend: false,
+                container_id: 'tvchart'
+              });
+              // Hide fallback canvas once TV loads
+              var canvas = document.getElementById('priceChart');
+              var loading = document.getElementById('chartLoading');
+              if (canvas) canvas.style.display = 'none';
+              if (loading) loading.style.display = 'none';
+            } catch (e) {
+              console.warn('TradingView init failed, using fallback chart.', e);
+            }
+          } else {
+            // retry until tv.js is ready
+            setTimeout(initTV, 400);
+          }
+        }
+        initTV();
+      });
+    </script>
+    <script src="js/trade.js"></script>
+</body>
+</html>

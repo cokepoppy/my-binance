@@ -1,0 +1,353 @@
+/* Earn Page Styles */
+
+/* Earn Hero Section */
+.earn-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    padding: var(--spacing-2xl) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Product Categories */
+.product-categories {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin: var(--spacing-xl) 0;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-weight: 500;
+}
+
+.category-btn:hover {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+}
+
+.category-btn.active {
+    background: var(--color-primary);
+    color: var(--color-bg-primary);
+    border-color: var(--color-primary);
+}
+
+/* Earn Products Grid */
+.earn-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.earn-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.earn-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.product-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--color-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-bg-primary);
+    font-size: var(--font-size-xl);
+}
+
+.product-info {
+    flex: 1;
+    margin-left: var(--spacing-md);
+}
+
+.product-info h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.product-type {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.apy-badge {
+    background: var(--color-success);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+.card-body {
+    padding: var(--spacing-lg);
+}
+
+.product-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-value {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+}
+
+.product-description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.5;
+}
+
+/* Calculator Section */
+.calculator-section {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.calculator-section h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+.calculator-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.calculator-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.calculator-form label {
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.calculator-form input,
+.calculator-form select {
+    padding: var(--spacing-md);
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+}
+
+.calculator-form input:focus,
+.calculator-form select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.calculator-result {
+    background: var(--color-bg-primary);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.result-value {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+}
+
+.result-value.positive {
+    color: var(--color-success);
+}
+
+/* My Earnings Section */
+.my-earnings-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.my-earnings-section h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.earnings-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.summary-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.summary-card h3 {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.summary-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.summary-change {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+.summary-change.positive {
+    color: var(--color-success);
+}
+
+.summary-change.negative {
+    color: var(--color-danger);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .earn-hero {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        align-items: flex-start;
+    }
+
+    .product-categories {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .earn-products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-container {
+        grid-template-columns: 1fr;
+    }
+
+    .earnings-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .product-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .calculator-section {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .product-categories {
+        justify-content: stretch;
+    }
+
+    .category-btn {
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .product-info {
+        margin-left: 0;
+    }
+
+    .apy-badge {
+        align-self: flex-start;
+    }
+}

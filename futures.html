@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futures Trading - Binance Clone</title>
+    <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/futures.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Binance</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="markets.html" class="nav-link">Markets</a></li>
+                        <li><a href="trade.html" class="nav-link">Trade</a></li>
+                        <li><a href="futures.html" class="nav-link active">Futures</a></li>
+                        <li><a href="earn.html" class="nav-link">Earn</a></li>
+                        <li><a href="wallet.html" class="nav-link">Wallet</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="support.html" class="nav-link">Support</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="language-selector" type="button">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <button class="btn-login" type="button">Log In</button>
+                    <button class="btn-register" type="button">Register</button>
+                    <button class="btn-wallet" type="button" style="display:none">
+                        <i class="fas fa-user"></i> 我的
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Futures Hero Section -->
+    <section class="futures-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Crypto Futures Trading</h1>
+                <p>Trade perpetual futures with up to 125x leverage</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">24h Volume</span>
+                        <span class="stat-value">$234.5B</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Open Interest</span>
+                        <span class="stat-value">$45.2B</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Traders</span>
+                        <span class="stat-value">2.1M</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Futures Trading Interface -->
+    <main class="main-content">
+        <div class="container">
+            <div class="futures-trading-container">
+                <!-- Trading Pair Selection -->
+                <div class="trading-pair-header">
+                    <div class="pair-selector">
+                        <select id="futuresPair" class="pair-select">
+                            <option value="BTCUSDT">BTC/USDT</option>
+                            <option value="ETHUSDT">ETH/USDT</option>
+                            <option value="BNBUSDT">BNB/USDT</option>
+                            <option value="ADAUSDT">ADA/USDT</option>
+                            <option value="SOLUSDT">SOL/USDT</option>
+                        </select>
+                    </div>
+                    <div class="price-info">
+                        <div class="current-price" id="futuresPrice">$43,256.78</div>
+                        <div class="price-change" id="futuresChange">+2.34%</div>
+                    </div>
+                    <div class="price-stats">
+                        <div class="stat-item">
+                            <span>24h High:</span>
+                            <span id="futuresHigh">$44,123.45</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>24h Low:</span>
+                            <span id="futuresLow">$42,987.65</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Volume:</span>
+                            <span id="futuresVolume">$23.4B</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trading Grid -->
+                <div class="futures-trading-grid">
+                    <!-- Chart Section -->
+                    <div class="chart-section">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3>Price Chart</h3>
+                                <div class="timeframe-selector">
+                                    <button class="timeframe-btn active" data-timeframe="1m">1m</button>
+                                    <button class="timeframe-btn" data-timeframe="5m">5m</button>
+                                    <button class="timeframe-btn" data-timeframe="15m">15m</button>
+                                    <button class="timeframe-btn" data-timeframe="1h">1h</button>
+                                    <button class="timeframe-btn" data-timeframe="4h">4h</button>
+                                    <button class="timeframe-btn" data-timeframe="1d">1d</button>
+                                </div>
+                            </div>
+                            <div class="chart-main">
+                                <canvas id="futuresChart" width="800" height="400"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Book -->
+                    <div class="order-book-section">
+                        <div class="order-book-container">
+                            <div class="order-book-header">
+                                <h3>Order Book</h3>
+                                <div class="depth-selector">
+                                    <button class="depth-btn active" data-depth="0.1">0.1%</button>
+                                    <button class="depth-btn" data-depth="0.5">0.5%</button>
+                                    <button class="depth-btn" data-depth="1.0">1.0%</button>
+                                </div>
+                            </div>
+                            <div class="order-book-content">
+                                <div class="order-book-header-row">
+                                    <span>Price</span>
+                                    <span>Amount</span>
+                                    <span>Total</span>
+                                </div>
+                                <div class="asks" id="futuresAsks">
+                                    <!-- Asks will be populated here -->
+                                </div>
+                                <div class="spread-info">
+                                    <span>Spread: <span id="futuresSpread">$2.34</span></span>
+                                </div>
+                                <div class="bids" id="futuresBids">
+                                    <!-- Bids will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trading Panel -->
+                    <div class="trading-panel">
+                        <div class="wallet-info">
+                            <div class="balance-item">
+                                <span>Available Balance:</span>
+                                <span id="futuresBalance">$5,234.56</span>
+                            </div>
+                            <div class="balance-item">
+                                <span>Margin Balance:</span>
+                                <span id="marginBalance">$8,234.56</span>
+                            </div>
+                            <div class="balance-item">
+                                <span>Available Margin:</span>
+                                <span id="availableMargin">$3,000.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Order Type Tabs -->
+                        <div class="order-tabs">
+                            <button class="tab-btn active" data-tab="limit">Limit</button>
+                            <button class="tab-btn" data-tab="market">Market</button>
+                            <button class="tab-btn" data-tab="stop">Stop</button>
+                            <button class="tab-btn" data-tab="stop-limit">Stop Limit</button>
+                        </div>
+
+                        <!-- Limit Order Form -->
+                        <div class="tab-content active" id="limit-tab">
+                            <form id="limitOrderForm">
+                                <div class="order-direction">
+                                    <button type="button" class="direction-btn long active" data-direction="long">
+                                        <i class="fas fa-arrow-up"></i> Long
+                                    </button>
+                                    <button type="button" class="direction-btn short" data-direction="short">
+                                        <i class="fas fa-arrow-down"></i> Short
+                                    </button>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="limitPrice">Price</label>
+                                    <div class="input-group">
+                                        <input type="number" id="limitPrice" step="0.01" placeholder="0.00">
+                                        <span class="input-currency">USDT</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="limitQuantity">Quantity</label>
+                                    <div class="input-group">
+                                        <input type="number" id="limitQuantity" step="0.001" placeholder="0.000">
+                                        <span class="input-currency">BTC</span>
+                                    </div>
+                                </div>
+
+                                <div class="leverage-control">
+                                    <label for="leverage">Leverage</label>
+                                    <input type="range" id="leverage" min="1" max="125" value="10">
+                                    <div class="leverage-display">
+                                        <span id="leverageValue">10x</span>
+                                    </div>
+                                </div>
+
+                                <div class="order-summary">
+                                    <div class="summary-row">
+                                        <span>Initial Margin:</span>
+                                        <span id="initialMargin">$0.00</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Estimated Fees:</span>
+                                        <span id="estimatedFees">$0.00</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Liquidation Price:</span>
+                                        <span id="liquidationPrice">-</span>
+                                    </div>
+                                </div>
+
+                                <div class="percentage-buttons">
+                                    <button type="button" class="percent-btn" data-percent="25">25%</button>
+                                    <button type="button" class="percent-btn" data-percent="50">50%</button>
+                                    <button type="button" class="percent-btn" data-percent="75">75%</button>
+                                    <button type="button" class="percent-btn" data-percent="100">100%</button>
+                                </div>
+
+                                <button type="submit" class="btn-primary btn-full long-btn">Buy/Long</button>
+                            </form>
+                        </div>
+
+                        <!-- Market Order Form -->
+                        <div class="tab-content" id="market-tab">
+                            <form id="marketOrderForm">
+                                <div class="order-direction">
+                                    <button type="button" class="direction-btn long active" data-direction="long">
+                                        <i class="fas fa-arrow-up"></i> Long
+                                    </button>
+                                    <button type="button" class="direction-btn short" data-direction="short">
+                                        <i class="fas fa-arrow-down"></i> Short
+                                    </button>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="marketQuantity">Quantity</label>
+                                    <div class="input-group">
+                                        <input type="number" id="marketQuantity" step="0.001" placeholder="0.000">
+                                        <span class="input-currency">BTC</span>
+                                    </div>
+                                </div>
+
+                                <div class="leverage-control">
+                                    <label for="marketLeverage">Leverage</label>
+                                    <input type="range" id="marketLeverage" min="1" max="125" value="10">
+                                    <div class="leverage-display">
+                                        <span id="marketLeverageValue">10x</span>
+                                    </div>
+                                </div>
+
+                                <div class="order-summary">
+                                    <div class="summary-row">
+                                        <span>Estimated Cost:</span>
+                                        <span id="estimatedCost">$0.00</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Estimated Fees:</span>
+                                        <span id="marketEstimatedFees">$0.00</span>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-primary btn-full long-btn">Buy/Long Market</button>
+                            </form>
+                        </div>
+
+                        <!-- Open Positions -->
+                        <div class="open-positions">
+                            <div class="positions-header">
+                                <h4>Open Positions</h4>
+                                <button class="close-all-btn" onclick="closeAllPositions()">Close All</button>
+                            </div>
+                            <div class="positions-list" id="positionsList">
+                                <!-- Positions will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Market Overview -->
+                <div class="market-overview">
+                    <h3>Market Overview</h3>
+                    <div class="overview-grid">
+                        <div class="overview-card funding-rate">
+                            <h4>Funding Rate</h4>
+                            <div class="rate-value" id="fundingRate">0.0001%</div>
+                            <div class="rate-time">Next: 2h 34m</div>
+                        </div>
+                        <div class="overview-card open-interest">
+                            <h4>Open Interest</h4>
+                            <div class="interest-value" id="openInterest">$2.34B</div>
+                            <div class="interest-change positive">+5.67%</div>
+                        </div>
+                        <div class="overview-card mark-price">
+                            <h4>Mark Price</h4>
+                            <div class="mark-price-value" id="markPrice">$43,258.90</div>
+                            <div class="price-diff">$2.12</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('loginModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Log In</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        <span class="form-error" id="loginEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="toggle-password" aria-label="Show password" data-target="loginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="form-error" id="loginPasswordError"></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-auth">Log In</button>
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="social-login">
+                        <div id="googleSignIn" style="display:flex; justify-content:center;"></div>
+                    </div>
+                </form>
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('registerModal')"></div>
+        <div class="modal-content auth-modal">
+            <div class="modal-header">
+                <h2>Register Account</h2>
+                <button class="close-btn" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar"></div>
+                            <div class="strength-text">Password strength</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span>I agree to the Terms of Service</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Register</button>
+                </form>
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Business Contacts</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Exchange</a></li>
+                        <li><a href="#">Academy</a></li>
+                        <li><a href="#">Charity</a></li>
+                        <li><a href="#">Card</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Service</h4>
+                    <ul>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Desktop Application</a></li>
+                        <li><a href="#">Buy Crypto</a></li>
+                        <li><a href="#">Fees</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">24/7 Chat Support</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Product Feedback</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <h2>Binance</h2>
+                </div>
+                <div class="footer-links">
+                    <p>&copy; 2024 Binance Clone. Educational purposes only.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/futures.js"></script>
+</body>
+</html>

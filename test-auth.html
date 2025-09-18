@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Test - Binance Clone</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container" style="padding: 40px 0;">
+        <h1>Authentication System Test</h1>
+
+        <div style="margin: 20px 0;">
+            <button class="btn-primary" onclick="showLoginModal()">Test Login</button>
+            <button class="btn-secondary" onclick="showRegisterModal()">Test Register</button>
+            <button class="btn-wallet" onclick="window.authManager && window.authManager.toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                User Menu
+            </button>
+        </div>
+
+        <div id="authStatus" style="margin: 20px 0; padding: 20px; background: var(--color-bg-card); border-radius: 8px;">
+            <h3>Authentication Status:</h3>
+            <div id="userInfo">Not logged in</div>
+        </div>
+
+        <div id="userList" style="margin: 20px 0; padding: 20px; background: var(--color-bg-card); border-radius: 8px;">
+            <h3>Registered Users:</h3>
+            <div id="usersList">No users registered</div>
+            <button onclick="clearAllUsers()" style="margin-top: 10px; background: var(--color-danger); color: white; border: none; padding: 8px 16px; border-radius: 4px;">Clear All Users</button>
+        </div>
+    </div>
+
+    <!-- Include the auth modals from main page -->
+    <div id="authModals"></div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Test functions
+        function updateAuthStatus() {
+            const userInfo = document.getElementById('userInfo');
+            const userList = document.getElementById('usersList');
+
+            if (window.authManager) {
+                const user = window.authManager.getCurrentUser();
+                if (user) {
+                    userInfo.innerHTML = `
+                        <div><strong>Logged in as:</strong> ${user.name}</div>
+                        <div><strong>Email:</strong> ${user.email}</div>
+                        <div><strong>2FA Enabled:</strong> ${user.twoFactorEnabled ? 'Yes' : 'No'}</div>
+                        <div><strong>Created:</strong> ${new Date(user.createdAt).toLocaleString()}</div>
+                        <button onclick="logout()" style="margin-top: 10px;">Logout</button>
+                    `;
+                } else {
+                    userInfo.innerHTML = 'Not logged in';
+                }
+
+                // Update users list
+                const users = window.authManager.users;
+                if (users.length > 0) {
+                    userList.innerHTML = users.map(u => `
+                        <div style="padding: 8px; border-bottom: 1px solid var(--color-border);">
+                            <strong>${u.name}</strong> (${u.email}) -
+                            2FA: ${u.twoFactorEnabled ? '✅' : '❌'} -
+                            Created: ${new Date(u.createdAt).toLocaleString()}
+                        </div>
+                    `).join('');
+                } else {
+                    userList.innerHTML = 'No users registered';
+                }
+            }
+        }
+
+        function clearAllUsers() {
+            if (window.authManager && confirm('Are you sure you want to clear all users?')) {
+                window.authManager.users = [];
+                window.authManager.saveUsers();
+                window.authManager.logout();
+                updateAuthStatus();
+            }
+        }
+
+        // Load auth modals from main page
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const modals = doc.querySelectorAll('.modal, .user-menu');
+                const authModalsContainer = document.getElementById('authModals');
+
+                modals.forEach(modal => {
+                    authModalsContainer.appendChild(modal.cloneNode(true));
+                });
+
+                // Re-initialize auth after modals are loaded
+                setTimeout(() => {
+                    if (window.authManager) {
+                        updateAuthStatus();
+
+                        // Set up interval to update status
+                        setInterval(updateAuthStatus, 1000);
+                    }
+                }, 100);
+            });
+
+        // Monitor auth state changes
+        setInterval(() => {
+            if (window.authManager) {
+                updateAuthStatus();
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

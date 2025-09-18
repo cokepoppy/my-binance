@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-frame { width: 100%; height: 600px; border: 2px solid #007bff; margin: 10px 0; }
+        .controls { margin: 20px 0; }
+        .btn { padding: 10px 20px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .btn:hover { background: #0056b3; }
+        .results { margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Binance Clone Navigation Test</h1>
+
+    <div class="controls">
+        <button class="btn" onclick="loadPage('index.html')">Test Homepage</button>
+        <button class="btn" onclick="loadPage('markets.html')">Test Markets</button>
+        <button class="btn" onclick="loadPage('trade.html')">Test Trade</button>
+        <button class="btn" onclick="loadPage('wallet.html')">Test Wallet</button>
+        <button class="btn" onclick="loadPage('futures.html')">Test Futures</button>
+        <button class="btn" onclick="loadPage('earn.html')">Test Earn</button>
+        <button class="btn" onclick="loadPage('news.html')">Test News</button>
+        <button class="btn" onclick="loadPage('support.html')">Test Support</button>
+    </div>
+
+    <iframe id="testFrame" class="test-frame" src="index.html"></iframe>
+
+    <div class="results">
+        <h3>📋 Test Instructions:</h3>
+        <ol>
+            <li>Use the buttons above to load different pages</li>
+            <li>Once a page loads, try clicking the navigation links in the iframe</li>
+            <li>Check if the navigation works correctly (pages should switch)</li>
+            <li>Verify that the active state updates correctly on the navigation links</li>
+        </ol>
+
+        <h4>✅ Expected Behavior:</h4>
+        <ul>
+            <li>Clicking navigation links should switch to the corresponding page</li>
+            <li>The active link should be highlighted</li>
+            <li>No console errors should appear</li>
+        </ul>
+
+        <h4>🔧 Fixed Issues:</h4>
+        <ul>
+            <li>Removed e.preventDefault() for normal page links</li>
+            <li>Added proper href attribute handling</li>
+            <li>Fixed navigation click handler in main.js</li>
+        </ul>
+    </div>
+
+    <script>
+        function loadPage(page) {
+            document.getElementById('testFrame').src = page;
+            console.log('Loading page:', page);
+        }
+
+        // Monitor iframe for navigation success
+        document.getElementById('testFrame').onload = function() {
+            console.log('Page loaded successfully');
+        };
+    </script>
+</body>
+</html>

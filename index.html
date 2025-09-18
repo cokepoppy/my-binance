@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance - Cryptocurrency Exchange</title>
+    <!-- Configure Google Sign-In (set your client ID) -->
+    <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Binance</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link active">Home</a></li>
+                        <li><a href="markets.html" class="nav-link">Markets</a></li>
+                        <li><a href="trade.html" class="nav-link">Trade</a></li>
+                        <li><a href="futures.html" class="nav-link">Futures</a></li>
+                        <li><a href="earn.html" class="nav-link">Earn</a></li>
+                        <li><a href="wallet.html" class="nav-link">Wallet</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="support.html" class="nav-link">Support</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="language-selector" type="button">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <button class="btn-login" type="button">Log In</button>
+                    <button class="btn-register" type="button">Register</button>
+                    <button class="btn-wallet" type="button">
+                        <i class="fas fa-wallet"></i>
+                        Wallet
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>The world's crypto data leader</h2>
+                    <p>Join millions of traders worldwide on the most advanced crypto exchange</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary">Start Trading</button>
+                        <button class="btn-secondary">Buy Crypto</button>
+                    </div>
+                </div>
+                <div class="hero-chart">
+                    <div class="chart-placeholder" id="heroChartContainer">
+                        <canvas id="heroChartCanvas" width="480" height="280" style="width:100%; height:100%; border-radius:12px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Overview Section -->
+    <section class="market-overview">
+        <div class="container">
+            <div class="section-header">
+                <h3>Market Overview</h3>
+                <div class="market-filters">
+                    <button class="filter-btn active">Spot</button>
+                    <button class="filter-btn">Futures</button>
+                    <button class="filter-btn">All</button>
+                </div>
+            </div>
+            <div class="market-grid">
+                <!-- Market Items -->
+                <div class="market-item">
+                    <div class="coin-info">
+                        <div class="coin-icon">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="coin-details">
+                            <span class="coin-symbol">BTC</span>
+                            <span class="coin-name">Bitcoin</span>
+                        </div>
+                    </div>
+                    <div class="coin-price">$43,256.78</div>
+                    <div class="coin-change positive">+2.34%</div>
+                    <div class="coin-volume">$28.5B</div>
+                    <div class="coin-chart">
+                        <canvas class="sparkline" width="100" height="30"></canvas>
+                    </div>
+                </div>
+
+                <div class="market-item">
+                    <div class="coin-info">
+                        <div class="coin-icon">
+                            <i class="fab fa-ethereum"></i>
+                        </div>
+                        <div class="coin-details">
+                            <span class="coin-symbol">ETH</span>
+                            <span class="coin-name">Ethereum</span>
+                        </div>
+                    </div>
+                    <div class="coin-price">$2,245.67</div>
+                    <div class="coin-change positive">+1.85%</div>
+                    <div class="coin-volume">$15.2B</div>
+                    <div class="coin-chart">
+                        <canvas class="sparkline" width="100" height="30"></canvas>
+                    </div>
+                </div>
+
+                <div class="market-item">
+                    <div class="coin-info">
+                        <div class="coin-icon">
+                            <span class="bnb-icon">BNB</span>
+                        </div>
+                        <div class="coin-details">
+                            <span class="coin-symbol">BNB</span>
+                            <span class="coin-name">BNB</span>
+                        </div>
+                    </div>
+                    <div class="coin-price">$312.45</div>
+                    <div class="coin-change negative">-0.92%</div>
+                    <div class="coin-volume">$1.8B</div>
+                    <div class="coin-chart">
+                        <canvas class="sparkline" width="100" height="30"></canvas>
+                    </div>
+                </div>
+
+                <div class="market-item">
+                    <div class="coin-info">
+                        <div class="coin-icon">
+                            <span class="sol-icon">SOL</span>
+                        </div>
+                        <div class="coin-details">
+                            <span class="coin-symbol">SOL</span>
+                            <span class="coin-name">Solana</span>
+                        </div>
+                    </div>
+                    <div class="coin-price">$98.76</div>
+                    <div class="coin-change positive">+5.67%</div>
+                    <div class="coin-volume">$2.1B</div>
+                    <div class="coin-chart">
+                        <canvas class="sparkline" width="100" height="30"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Secure & Reliable</h4>
+                    <p>Industry-leading security with multi-signature cold storage</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Lightning Fast</h4>
+                    <p>High-performance matching engine capable of processing 1.4M orders/sec</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h4>Low Fees</h4>
+                    <p>Competitive trading fees with additional discounts using BNB</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Mobile Trading</h4>
+                    <p>Full-featured mobile app for trading on the go</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h3>Ready to start trading?</h3>
+                <p>Join millions of traders worldwide</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary">Get Started</button>
+                    <button class="btn-secondary">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Business Contacts</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Exchange</a></li>
+                        <li><a href="#">Academy</a></li>
+                        <li><a href="#">Charity</a></li>
+                        <li><a href="#">Card</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Service</h4>
+                    <ul>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Desktop Application</a></li>
+                        <li><a href="#">Fees</a></li>
+                        <li><a href="#">Referral Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">24/7 Chat Support</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Product Feedback</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <h2>Binance</h2>
+                </div>
+                <div class="footer-links">
+                    <span>© 2024 Binance</span>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-reddit"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Authentication Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('loginModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Log In</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        <span class="form-error" id="loginEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="toggle-password" aria-label="Show password" data-target="loginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="form-error" id="loginPasswordError"></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-auth">Log In</button>
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="social-login">
+                        <div id="googleSignIn" style="display:flex; justify-content:center;"></div>
+                    </div>
+                </form>
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('registerModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sign Up</h2>
+                <button class="modal-close" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" name="email" required>
+                        <span class="form-error" id="registerEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" name="password" required>
+                        <span class="form-error" id="registerPasswordError"></span>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <span class="strength-text">Password strength</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <span class="form-error" id="confirmPasswordError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="referralCode">Referral Code (Optional)</label>
+                        <input type="text" id="referralCode" name="referralCode">
+                    </div>
+                    <div class="form-agree">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                        <span class="form-error" id="agreeTermsError"></span>
+                    </div>
+                    <button type="submit" class="btn-auth">Sign Up</button>
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="social-login">
+                        <button type="button" class="btn-social">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </button>
+                        <button type="button" class="btn-social">
+                            <i class="fab fa-apple"></i>
+                            Continue with Apple
+                        </button>
+                    </div>
+                </form>
+                <div class="auth-switch">
+                    Already have an account? <a href="#" onclick="switchToLogin()">Log In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Menu Dropdown -->
+    <div id="userMenu" class="user-menu">
+        <div class="user-menu-header">
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="user-info">
+                <div class="user-name" id="userName">User Name</div>
+                <div class="user-email" id="userEmail">user@email.com</div>
+            </div>
+        </div>
+        <div class="user-menu-items">
+            <a href="account.html" class="menu-item">
+                <i class="fas fa-user-circle"></i>
+                My Page
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-wallet"></i>
+                Wallet
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-chart-line"></i>
+                Trading Dashboard
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-shield-alt"></i>
+                Security
+            </a>
+            <a href="#" class="menu-item">
+                <i class="fas fa-history"></i>
+                Order History
+            </a>
+            <div class="menu-divider"></div>
+            <a href="#" class="menu-item" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Log Out
+            </a>
+        </div>
+    </div>
+
+    <!-- Two-Factor Authentication Modal -->
+    <div id="twoFactorModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('twoFactorModal')"></div>
+        <div class="modal-content two-factor-content">
+            <div class="modal-header">
+                <h2>Two-Factor Authentication</h2>
+                <button class="modal-close" onclick="closeModal('twoFactorModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="two-factor-setup">
+                    <div class="qr-code">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <p>Scan this QR code with your authenticator app</p>
+                    </div>
+                    <div class="manual-entry">
+                        <p>Or enter this code manually:</p>
+                        <div class="setup-code">ABC123DEF456</div>
+                    </div>
+                </div>
+                <form id="twoFactorForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="twoFactorCode">Enter 6-digit code</label>
+                        <input type="text" id="twoFactorCode" name="code" maxlength="6" pattern="[0-9]{6}" required>
+                        <span class="form-error" id="twoFactorCodeError"></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="trustDevice">
+                            <span class="checkmark"></span>
+                            Trust this device for 30 days
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-auth">Verify & Complete Setup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

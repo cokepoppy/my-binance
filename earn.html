@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earn - Binance Clone</title>
+    <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/earn.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Binance</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="markets.html" class="nav-link">Markets</a></li>
+                        <li><a href="trade.html" class="nav-link">Trade</a></li>
+                        <li><a href="futures.html" class="nav-link">Futures</a></li>
+                        <li><a href="earn.html" class="nav-link active">Earn</a></li>
+                        <li><a href="wallet.html" class="nav-link">Wallet</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="support.html" class="nav-link">Support</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="language-selector" type="button">
+                        <i class="fas fa-globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <button class="btn-login" type="button">Log In</button>
+                    <button class="btn-register" type="button">Register</button>
+                    <button class="btn-wallet" type="button" style="display:none">
+                        <i class="fas fa-user"></i> 我的
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Earn Hero Section -->
+    <section class="earn-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Earn Crypto Rewards</h1>
+                <p>Stake, lend, and earn passive income with your crypto assets</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Value Locked</span>
+                        <span class="stat-value">$45.2B</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Active Earners</span>
+                        <span class="stat-value">1.2M</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Avg. APY</span>
+                        <span class="stat-value">8.5%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earn Products -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Product Categories -->
+            <div class="product-categories">
+                <button class="category-btn active" data-category="all">All Products</button>
+                <button class="category-btn" data-category="staking">Staking</button>
+                <button class="category-btn" data-category="defi">DeFi Yield</button>
+                <button class="category-btn" data-category="savings">Savings</button>
+                <button class="category-btn" data-category="liquidity">Liquidity Mining</button>
+            </div>
+
+            <!-- Earn Products Grid -->
+            <div class="earn-products-grid">
+                <!-- Staking Products -->
+                <div class="earn-card" data-category="staking">
+                    <div class="card-header">
+                        <div class="product-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>ETH Staking</h3>
+                            <span class="product-type">Staking</span>
+                        </div>
+                        <div class="apy-badge">5.2% APY</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-stats">
+                            <div class="stat">
+                                <span class="stat-label">Duration</span>
+                                <span class="stat-value">Flexible</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Min. Amount</span>
+                                <span class="stat-value">0.1 ETH</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Total Staked</span>
+                                <span class="stat-value">$2.3B</span>
+                            </div>
+                        </div>
+                        <div class="product-description">
+                            Stake your ETH and earn rewards while securing the Ethereum network.
+                        </div>
+                        <button class="btn-primary btn-full">Stake Now</button>
+                    </div>
+                </div>
+
+                <!-- DeFi Yield Product -->
+                <div class="earn-card" data-category="defi">
+                    <div class="card-header">
+                        <div class="product-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>DeFi Yield Farming</h3>
+                            <span class="product-type">DeFi Yield</span>
+                        </div>
+                        <div class="apy-badge">12.8% APY</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-stats">
+                            <div class="stat">
+                                <span class="stat-label">Duration</span>
+                                <span class="stat-value">30 Days</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Min. Amount</span>
+                                <span class="stat-value">$100</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Risk Level</span>
+                                <span class="stat-value">Medium</span>
+                            </div>
+                        </div>
+                        <div class="product-description">
+                            Earn high yields by providing liquidity to top DeFi protocols.
+                        </div>
+                        <button class="btn-primary btn-full">Start Earning</button>
+                    </div>
+                </div>
+
+                <!-- Savings Product -->
+                <div class="earn-card" data-category="savings">
+                    <div class="card-header">
+                        <div class="product-icon">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Flexible Savings</h3>
+                            <span class="product-type">Savings</span>
+                        </div>
+                        <div class="apy-badge">3.5% APY</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-stats">
+                            <div class="stat">
+                                <span class="stat-label">Duration</span>
+                                <span class="stat-value">Flexible</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Min. Amount</span>
+                                <span class="stat-value">$1</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Interest</span>
+                                <span class="stat-value">Daily</span>
+                            </div>
+                        </div>
+                        <div class="product-description">
+                            Earn daily interest on your crypto with no lock-up period.
+                        </div>
+                        <button class="btn-primary btn-full">Start Saving</button>
+                    </div>
+                </div>
+
+                <!-- Liquidity Mining -->
+                <div class="earn-card" data-category="liquidity">
+                    <div class="card-header">
+                        <div class="product-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Liquidity Mining</h3>
+                            <span class="product-type">Liquidity Mining</span>
+                        </div>
+                        <div class="apy-badge">18.5% APY</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-stats">
+                            <div class="stat">
+                                <span class="stat-label">Duration</span>
+                                <span class="stat-value">60 Days</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Min. Amount</span>
+                                <span class="stat-value">$500</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Rewards</span>
+                                <span class="stat-value">BNB + Tokens</span>
+                            </div>
+                        </div>
+                        <div class="product-description">
+                            Provide liquidity and earn trading fees plus bonus rewards.
+                        </div>
+                        <button class="btn-primary btn-full">Provide Liquidity</button>
+                    </div>
+                </div>
+
+                <!-- More Products -->
+                <div class="earn-card" data-category="staking">
+                    <div class="card-header">
+                        <div class="product-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>BTC Staking</h3>
+                            <span class="product-type">Staking</span>
+                        </div>
+                        <div class="apy-badge">4.8% APY</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-stats">
+                            <div class="stat">
+                                <span class="stat-label">Duration</span>
+                                <span class="stat-value">90 Days</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Min. Amount</span>
+                                <span class="stat-value">0.01 BTC</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Total Staked</span>
+                                <span class="stat-value">$1.8B</span>
+                            </div>
+                        </div>
+                        <div class="product-description">
+                            Stake your Bitcoin and earn regular rewards with our secure platform.
+                        </div>
+                        <button class="btn-primary btn-full">Stake Now</button>
+                    </div>
+                </div>
+
+                <div class="earn-card" data-category="defi">
+                    <div class="card-header">
+                        <div class="product-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>Launchpool</h3>
+                            <span class="product-type">DeFi Yield</span>
+                        </div>
+                        <div class="apy-badge">25.0% APY</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-stats">
+                            <div class="stat">
+                                <span class="stat-label">Duration</span>
+                                <span class="stat-value">30 Days</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Min. Amount</span>
+                                <span class="stat-value">$50</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Rewards</span>
+                                <span class="stat-value">New Tokens</span>
+                            </div>
+                        </div>
+                        <div class="product-description">
+                            Farm new tokens by staking BNB and other cryptocurrencies.
+                        </div>
+                        <button class="btn-primary btn-full">Start Farming</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earnings Calculator -->
+            <div class="calculator-section">
+                <h2>Earnings Calculator</h2>
+                <div class="calculator-container">
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="investAmount">Investment Amount (USD)</label>
+                            <input type="number" id="investAmount" placeholder="1000" value="1000">
+                        </div>
+                        <div class="form-group">
+                            <label for="apyRate">Expected APY (%)</label>
+                            <input type="number" id="apyRate" placeholder="8.5" value="8.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="timePeriod">Time Period</label>
+                            <select id="timePeriod">
+                                <option value="30">30 Days</option>
+                                <option value="90">90 Days</option>
+                                <option value="180">180 Days</option>
+                                <option value="365">1 Year</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary" onclick="calculateEarnings()">Calculate Earnings</button>
+                    </div>
+                    <div class="calculator-result">
+                        <div class="result-item">
+                            <span class="result-label">Initial Investment:</span>
+                            <span class="result-value" id="initialInvestment">$1,000.00</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Estimated Earnings:</span>
+                            <span class="result-value positive" id="estimatedEarnings">$69.86</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Final Value:</span>
+                            <span class="result-value" id="finalValue">$1,069.86</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Earnings Section -->
+            <div class="my-earnings-section">
+                <h2>My Earnings</h2>
+                <div class="earnings-summary">
+                    <div class="summary-card">
+                        <h3>Total Value</h3>
+                        <div class="summary-value" id="totalEarningsValue">$12,345.67</div>
+                        <div class="summary-change positive">+2.34%</div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Daily Earnings</h3>
+                        <div class="summary-value" id="dailyEarnings">$34.56</div>
+                        <div class="summary-change positive">+0.5%</div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Active Products</h3>
+                        <div class="summary-value" id="activeProducts">3</div>
+                        <div class="summary-change">Active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('loginModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Log In</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        <span class="form-error" id="loginEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" name="password" required>
+                            <button type="button" class="toggle-password" aria-label="Show password" data-target="loginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="form-error" id="loginPasswordError"></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-auth">Log In</button>
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="social-login">
+                        <div id="googleSignIn" style="display:flex; justify-content:center;"></div>
+                    </div>
+                </form>
+                <div class="auth-switch">
+                    Don't have an account? <a href="#" onclick="switchToRegister()">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('registerModal')"></div>
+        <div class="modal-content auth-modal">
+            <div class="modal-header">
+                <h2>Register Account</h2>
+                <button class="close-btn" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar"></div>
+                            <div class="strength-text">Password strength</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span>I agree to the Terms of Service</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Register</button>
+                </form>
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Business Contacts</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Exchange</a></li>
+                        <li><a href="#">Academy</a></li>
+                        <li><a href="#">Charity</a></li>
+                        <li><a href="#">Card</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Service</h4>
+                    <ul>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Desktop Application</a></li>
+                        <li><a href="#">Buy Crypto</a></li>
+                        <li><a href="#">Fees</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">24/7 Chat Support</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Product Feedback</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <h2>Binance</h2>
+                </div>
+                <div class="footer-links">
+                    <p>&copy; 2024 Binance Clone. Educational purposes only.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/earn.js"></script>
+</body>
+</html>

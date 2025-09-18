@@ -1,0 +1,677 @@
+/* Markets Page Styles */
+
+/* Markets Hero Section */
+.markets-hero {
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+    padding: var(--spacing-2xl) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+.hero-content p {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+}
+
+.market-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-2xl);
+    margin-top: var(--spacing-xl);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-value {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+}
+
+/* Markets Container */
+.markets-container {
+    padding: var(--spacing-xl) 0;
+}
+
+/* Search and Filter Section */
+.markets-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-lg);
+}
+
+.search-bar {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-bar i {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-secondary);
+}
+
+.search-bar input {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-xl);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(240, 185, 11, 0.1);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+}
+
+.filter-btn:hover {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+}
+
+.filter-btn.active {
+    background: var(--color-primary);
+    color: var(--color-bg-primary);
+    border-color: var(--color-primary);
+}
+
+/* Market Tabs */
+.market-tabs {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.tab-btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: transparent;
+    color: var(--color-text-secondary);
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-weight: 500;
+}
+
+.tab-btn:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+}
+
+.tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+/* Sort Controls */
+.sort-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.sort-options span {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.sort-options select {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.sort-options select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.view-toggle {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.view-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-btn:hover {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+}
+
+.view-btn.active {
+    background: var(--color-primary);
+    color: var(--color-bg-primary);
+    border-color: var(--color-primary);
+}
+
+/* Table View */
+.table-container {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.markets-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.markets-table th {
+    background: var(--color-bg-primary);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    text-align: left;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--font-size-sm);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.markets-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--font-size-sm);
+}
+
+.markets-table tr:hover {
+    background: var(--color-bg-tertiary);
+}
+
+.markets-table .rank {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.markets-table .coin-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.coin-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+}
+
+.coin-name {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.coin-symbol {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+}
+
+.price {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.change {
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+.change.positive {
+    color: var(--color-success);
+}
+
+.change.negative {
+    color: var(--color-danger);
+}
+
+.volume, .market-cap {
+    color: var(--color-text-secondary);
+}
+
+.sparkline {
+    width: 100px;
+    height: 30px;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+}
+
+.action-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--color-primary);
+    color: var(--color-bg-primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+.action-btn:hover {
+    background: #d4a208;
+}
+
+/* Grid View */
+.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.market-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.market-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.market-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+}
+
+.market-card-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.market-card-rank {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.market-card-name {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.market-card-symbol {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+}
+
+.market-card-price {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.market-card-change {
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.market-card-sparkline {
+    width: 100%;
+    height: 60px;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.market-card-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+}
+
+.market-card-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.market-card-stat-label {
+    color: var(--color-text-secondary);
+}
+
+.market-card-stat-value {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-numbers {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.page-number {
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.page-number:hover {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+}
+
+.page-number.active {
+    background: var(--color-primary);
+    color: var(--color-bg-primary);
+    border-color: var(--color-primary);
+}
+
+/* Market Detail Modal */
+.market-detail-modal {
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.market-detail-content {
+    display: grid;
+    gap: var(--spacing-xl);
+}
+
+.detail-section h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-primary);
+}
+
+.price-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.current-price {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.price-change {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+.price-change.positive {
+    color: var(--color-success);
+}
+
+.price-change.negative {
+    color: var(--color-danger);
+}
+
+.price-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.stat-row span:first-child {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.stat-row span:last-child {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.action-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .markets-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-bar {
+        max-width: none;
+    }
+
+    .sort-controls {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: stretch;
+    }
+
+    .grid-view {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .markets-hero {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .market-stats {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+
+    .filter-buttons {
+        justify-content: center;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .markets-table {
+        min-width: 600px;
+    }
+
+    .grid-view {
+        grid-template-columns: 1fr;
+    }
+
+    .market-detail-content {
+        gap: var(--spacing-lg);
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .market-tabs {
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .page-number, .page-btn {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Loading Animation */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-border);
+    border-top: 2px solid var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Sparkline Chart Styles */
+.sparkline canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* Custom Scrollbar */
+.markets-table tbody::-webkit-scrollbar {
+    width: 6px;
+}
+
+.markets-table tbody::-webkit-scrollbar-track {
+    background: var(--color-bg-primary);
+}
+
+.markets-table tbody::-webkit-scrollbar-thumb {
+    background: var(--color-bg-tertiary);
+    border-radius: 3px;
+}
+
+.markets-table tbody::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-tertiary);
+}
