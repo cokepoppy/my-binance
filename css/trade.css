@@ -29,14 +29,15 @@
 }
 
 .coin-icon {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
     font-size: var(--font-size-sm);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 .coin-icon.btc {
@@ -66,43 +67,59 @@
 }
 
 .current-price {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-3xl);
     font-weight: 700;
 }
 
 .price-change {
-    font-size: var(--font-size-base);
-    font-weight: 600;
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
 }
 
 .price-change.positive {
     color: var(--color-success);
+    background: rgba(14, 203, 129, 0.12);
+    border-color: rgba(14, 203, 129, 0.35);
 }
 
 .price-change.negative {
     color: var(--color-danger);
+    background: rgba(246, 70, 93, 0.12);
+    border-color: rgba(246, 70, 93, 0.35);
 }
 
 .pair-stats {
     display: flex;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
 }
 
 .stat-item {
-    text-align: center;
+    text-align: left;
+    padding: 0 12px;
 }
+
+.stat-item + .stat-item { border-left: 1px solid var(--color-border); }
 
 .stat-label {
     display: block;
     color: var(--color-text-secondary);
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--spacing-xs);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
 }
 
 .stat-value {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text-primary);
 }
+
 
 .stat-value.positive {
     color: var(--color-success);
@@ -204,12 +221,57 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    font-weight: 600;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
+
+.price-change.positive {
+    color: var(--color-success);
+    background: rgba(14, 203, 129, 0.12);
+    border-color: rgba(14, 203, 129, 0.35);
+}
+
+.price-change.negative {
+    color: var(--color-danger);
+    background: rgba(246, 70, 93, 0.12);
+    border-color: rgba(246, 70, 93, 0.35);
+}
+
+.pair-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+}
+
+.stat-item {
+    text-align: left;
+    padding: 0 12px;
+}
+
+.stat-item + .stat-item { border-left: 1px solid var(--color-border); }
+
+.stat-label {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: var(--color-text-primary);
 }
 
 .chart-timeframe {
     color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 .chart-controls {
@@ -263,29 +325,7 @@
     font-size: var(--font-size-xl);
 }
 
-.chart-footer {
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-top: 1px solid var(--color-border);
-}
-
-.volume-bars {
-    display: flex;
-    align-items: flex-end;
-    height: 40px;
-    gap: 2px;
-}
-
-.volume-bar {
-    flex: 1;
-    background: var(--color-primary);
-    opacity: 0.6;
-    border-radius: 1px;
-    transition: opacity var(--transition-fast);
-}
-
-.volume-bar:hover {
-    opacity: 1;
-}
+/* Static volume footer removed; TradingView can render volume study */
 
 /* Trade History */
 .trade-history {
@@ -305,7 +345,51 @@
 
 .section-header h3 {
     font-size: var(--font-size-lg);
-    font-weight: 600;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
+
+.price-change.positive {
+    color: var(--color-success);
+    background: rgba(14, 203, 129, 0.12);
+    border-color: rgba(14, 203, 129, 0.35);
+}
+
+.price-change.negative {
+    color: var(--color-danger);
+    background: rgba(246, 70, 93, 0.12);
+    border-color: rgba(246, 70, 93, 0.35);
+}
+
+.pair-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+}
+
+.stat-item {
+    text-align: left;
+    padding: 0 12px;
+}
+
+.stat-item + .stat-item { border-left: 1px solid var(--color-border); }
+
+.stat-label {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: var(--color-text-primary);
 }
 
 .history-filters {
@@ -322,6 +406,7 @@
     cursor: pointer;
     transition: all var(--transition-fast);
     font-size: var(--font-size-sm);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 .filter-btn:hover,
@@ -354,6 +439,7 @@
     padding: var(--spacing-sm) var(--spacing-md);
     border-bottom: 1px solid var(--color-border);
     font-size: var(--font-size-sm);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 .history-table tr.buy .price {
@@ -389,7 +475,51 @@
 
 .order-book-header h3 {
     font-size: var(--font-size-lg);
-    font-weight: 600;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
+
+.price-change.positive {
+    color: var(--color-success);
+    background: rgba(14, 203, 129, 0.12);
+    border-color: rgba(14, 203, 129, 0.35);
+}
+
+.price-change.negative {
+    color: var(--color-danger);
+    background: rgba(246, 70, 93, 0.12);
+    border-color: rgba(246, 70, 93, 0.35);
+}
+
+.pair-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+}
+
+.stat-item {
+    text-align: left;
+    padding: 0 12px;
+}
+
+.stat-item + .stat-item { border-left: 1px solid var(--color-border); }
+
+.stat-label {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: var(--color-text-primary);
 }
 
 .depth-toggle {
@@ -407,7 +537,51 @@
     cursor: pointer;
     transition: all var(--transition-fast);
     font-size: var(--font-size-xs);
-    font-weight: 600;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
+
+.price-change.positive {
+    color: var(--color-success);
+    background: rgba(14, 203, 129, 0.12);
+    border-color: rgba(14, 203, 129, 0.35);
+}
+
+.price-change.negative {
+    color: var(--color-danger);
+    background: rgba(246, 70, 93, 0.12);
+    border-color: rgba(246, 70, 93, 0.35);
+}
+
+.pair-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+}
+
+.stat-item {
+    text-align: left;
+    padding: 0 12px;
+}
+
+.stat-item + .stat-item { border-left: 1px solid var(--color-border); }
+
+.stat-label {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: var(--color-text-primary);
 }
 
 .depth-btn:hover,
@@ -437,6 +611,7 @@
 
 .order-list {
     font-size: var(--font-size-sm);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 .order-row {
@@ -453,7 +628,51 @@
 }
 
 .price {
-    font-weight: 600;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
+
+.price-change.positive {
+    color: var(--color-success);
+    background: rgba(14, 203, 129, 0.12);
+    border-color: rgba(14, 203, 129, 0.35);
+}
+
+.price-change.negative {
+    color: var(--color-danger);
+    background: rgba(246, 70, 93, 0.12);
+    border-color: rgba(246, 70, 93, 0.35);
+}
+
+.pair-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+}
+
+.stat-item {
+    text-align: left;
+    padding: 0 12px;
+}
+
+.stat-item + .stat-item { border-left: 1px solid var(--color-border); }
+
+.stat-label {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: var(--color-text-primary);
 }
 
 .price.sell {
@@ -490,6 +709,7 @@
     color: var(--color-text-primary);
     font-weight: 600;
     font-size: var(--font-size-sm);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 /* Trading Form */
@@ -560,7 +780,7 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     color: var(--color-text-primary);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     transition: all var(--transition-fast);
 }
 
@@ -628,11 +848,56 @@
 .balance-item span:first-child {
     color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 .balance-item span:last-child {
     color: var(--color-text-primary);
-    font-weight: 600;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
+
+.price-change.positive {
+    color: var(--color-success);
+    background: rgba(14, 203, 129, 0.12);
+    border-color: rgba(14, 203, 129, 0.35);
+}
+
+.price-change.negative {
+    color: var(--color-danger);
+    background: rgba(246, 70, 93, 0.12);
+    border-color: rgba(246, 70, 93, 0.35);
+}
+
+.pair-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+}
+
+.stat-item {
+    text-align: left;
+    padding: 0 12px;
+}
+
+.stat-item + .stat-item { border-left: 1px solid var(--color-border); }
+
+.stat-label {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: var(--color-text-primary);
 }
 
 .order-buttons {
@@ -688,6 +953,7 @@
     cursor: pointer;
     transition: all var(--transition-fast);
     font-size: var(--font-size-sm);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 .cancel-all-btn:hover {
@@ -710,7 +976,8 @@
 }
 
 .no-orders p {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
 .order-item {

@@ -12,6 +12,7 @@ class TradingEngine {
             bids: [],
             asks: []
         };
+        this.orderBookDepth = 10;
         this.userBalance = {
             USDT: 1234.56,
             BTC: 0.0234
@@ -28,6 +29,13 @@ class TradingEngine {
         this.initializeTradeHistory();
         this.startRealTimeUpdates();
         this.loadAuthModals();
+        // Restore last timeframe preference if available
+        try {
+            const savedTf = localStorage.getItem('trade_timeframe');
+            if (savedTf && document.querySelector(`.timeframe-btn[data-timeframe="${savedTf}"]`)) {
+                this.switchTimeframe(savedTf);
+            }
+        } catch (e) {}
     }
 
     setupEventListeners() {
@@ -81,6 +89,23 @@ class TradingEngine {
         document.addEventListener('keydown', (e) => {
             this.handleKeyboardShortcuts(e);
         });
+
+        // Order book click-to-fill price (limit order)
+        const asksList = document.getElementById('asksList');
+        const bidsList = document.getElementById('bidsList');
+        const onRowClick = (ev) => {
+            const row = ev.target.closest('.order-row');
+            const priceEl = row?.querySelector('.price');
+            if (!priceEl) return;
+            const price = parseFloat(priceEl.textContent.replace(/[^0-9.]/g, ''));
+            const priceInput = document.getElementById('limitPrice');
+            if (priceInput && !Number.isNaN(price)) {
+                priceInput.value = price.toFixed(2);
+                this.calculateTotal('limit');
+            }
+        };
+        if (asksList) asksList.addEventListener('click', onRowClick);
+        if (bidsList) bidsList.addEventListener('click', onRowClick);
     }
 
     setupTradingForms() {
@@ -175,8 +200,26 @@ class TradingEngine {
             }
         });
 
-        // Update chart
+        // Save preference
+        try { localStorage.setItem('trade_timeframe', timeframe); } catch (e) {}
+
+        // Update timeframe label
+        const tfLabel = document.querySelector('.chart-timeframe');
+        if (tfLabel) tfLabel.textContent = timeframe.toUpperCase();
+
+        // Update fallback canvas chart
         this.updateChart();
+
+        // Update TradingView resolution if available
+        const tv = window.tvWidget;
+        if (tv && window.tvWidgetReady && typeof tv.activeChart === 'function') {
+            const map = {
+                '1m': '1', '5m': '5', '15m': '15', '1h': '60', '4h': '240', '1d': 'D'
+            };
+            const res = map[timeframe] || '15';
+            try { tv.activeChart().setResolution(res); } catch (e) {}
+        }
+
         this.showNotification(`Switched to ${timeframe} timeframe`, 'info');
     }
 
@@ -307,7 +350,7 @@ class TradingEngine {
         const bidsList = document.getElementById('bidsList');
 
         if (asksList) {
-            asksList.innerHTML = this.orderBook.asks.slice(0, 5).map(order => `
+            asksList.innerHTML = this.orderBook.asks.slice(0, this.orderBookDepth).map(order => `
                 <div class="order-row">
                     <span class="price sell">${order.price.toFixed(2)}</span>
                     <span class="amount">${order.amount.toFixed(4)}</span>
@@ -317,7 +360,7 @@ class TradingEngine {
         }
 
         if (bidsList) {
-            bidsList.innerHTML = this.orderBook.bids.slice(0, 5).map(order => `
+            bidsList.innerHTML = this.orderBook.bids.slice(0, this.orderBookDepth).map(order => `
                 <div class="order-row">
                     <span class="price buy">${order.price.toFixed(2)}</span>
                     <span class="amount">${order.amount.toFixed(4)}</span>
@@ -336,7 +379,8 @@ class TradingEngine {
             }
         });
 
-        // Re-render order book with new depth
+        // Apply new depth and re-render
+        this.orderBookDepth = depth;
         this.renderOrderBook();
         this.showNotification(`Order book depth: ${depth} rows`, 'info');
     }

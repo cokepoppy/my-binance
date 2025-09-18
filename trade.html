@@ -133,17 +133,7 @@
                                 Loading chart...
                             </div>
                         </div>
-                        <div class="chart-footer">
-                            <div class="volume-bars">
-                                <div class="volume-bar" style="height: 60%"></div>
-                                <div class="volume-bar" style="height: 80%"></div>
-                                <div class="volume-bar" style="height: 45%"></div>
-                                <div class="volume-bar" style="height: 90%"></div>
-                                <div class="volume-bar" style="height: 70%"></div>
-                                <div class="volume-bar" style="height: 55%"></div>
-                                <div class="volume-bar" style="height: 85%"></div>
-                            </div>
-                        </div>
+                        <!-- Removed static volume bars; TradingView shows volume via study -->
                     </div>
 
                     <!-- Trade History -->
@@ -586,7 +576,7 @@
           if (!container) return;
           if (window.TradingView && window.TradingView.widget) {
             try {
-              new TradingView.widget({
+              window.tvWidget = new TradingView.widget({
                 autosize: true,
                 symbol: 'BINANCE:BTCUSDT',
                 interval: '15',
@@ -598,13 +588,17 @@
                 enable_publishing: false,
                 hide_top_toolbar: false,
                 hide_legend: false,
+                studies: ['Volume@tv-basicstudies'],
                 container_id: 'tvchart'
               });
-              // Hide fallback canvas once TV loads
-              var canvas = document.getElementById('priceChart');
-              var loading = document.getElementById('chartLoading');
-              if (canvas) canvas.style.display = 'none';
-              if (loading) loading.style.display = 'none';
+              // on ready: hide fallback canvas and mark ready
+              window.tvWidget.onChartReady(function() {
+                var canvas = document.getElementById('priceChart');
+                var loading = document.getElementById('chartLoading');
+                if (canvas) canvas.style.display = 'none';
+                if (loading) loading.style.display = 'none';
+                window.tvWidgetReady = true;
+              });
             } catch (e) {
               console.warn('TradingView init failed, using fallback chart.', e);
             }
