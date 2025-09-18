@@ -1,0 +1,33 @@
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+tmp/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts (if added later)
+dist/
+build/
+coverage/
+.cache/
+
+# Env/config (if used later)
+.env
+.env.*
+
+# Editors/IDE
+.vscode/
+.idea/
+
+# Maps
+*.map
+
