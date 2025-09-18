@@ -14,6 +14,8 @@
     align-items: center;
     flex-wrap: wrap;
     gap: var(--spacing-lg);
+    /* add horizontal breathing room from container edges */
+    padding: 0 var(--spacing-lg);
 }
 
 .pair-main {
@@ -133,6 +135,8 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-lg);
+    /* shift actions slightly to the right from the left edge */
+    padding: 0 var(--spacing-lg);
 }
 
 .timeframes {
