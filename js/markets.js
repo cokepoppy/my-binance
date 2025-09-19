@@ -204,10 +204,20 @@ class MarketsManager {
 
     setupEventListeners() {
         // Search functionality
-        document.getElementById('searchInput').addEventListener('input', (e) => {
+        const searchInput = document.getElementById('searchInput');
+        const searchClear = document.getElementById('searchClear');
+        searchInput.addEventListener('input', (e) => {
             this.searchQuery = e.target.value.toLowerCase();
             this.filterAndSortCryptos();
         });
+        if (searchClear) {
+            searchClear.addEventListener('click', () => {
+                searchInput.value = '';
+                this.searchQuery = '';
+                this.filterAndSortCryptos();
+                searchInput.focus();
+            });
+        }
 
         // Filter buttons
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -234,6 +244,21 @@ class MarketsManager {
             this.filterAndSortCryptos();
         });
 
+        // Header sort (clickable th) - delegate
+        document.addEventListener('click', (e) => {
+            const th = e.target.closest('.markets-table th.sortable');
+            if (!th) return;
+            const key = th.dataset.sort;
+            if (this.currentSort === key) {
+                this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+            } else {
+                this.currentSort = key;
+                this.currentSortDir = key === 'name' || key === 'rank' ? 'asc' : 'desc';
+            }
+            this.updateHeaderSortIndicators();
+            this.filterAndSortCryptos();
+        });
+
         // View toggle
         document.querySelectorAll('.view-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -241,6 +266,21 @@ class MarketsManager {
                 e.target.classList.add('active');
                 this.currentView = e.target.dataset.view;
                 this.toggleView();
+            });
+        });
+
+        // Density toggle
+        document.querySelectorAll('.density-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.density-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const container = document.querySelector('.table-container');
+                if (!container) return;
+                if (btn.dataset.density === 'compact') {
+                    container.classList.add('compact');
+                } else {
+                    container.classList.remove('compact');
+                }
             });
         });
 
@@ -279,19 +319,44 @@ class MarketsManager {
             );
         }
 
+        // Quick filter (gainers/losers/trending)
+        if (this.currentQuick === 'gainers') {
+            this.filteredCryptos = [...this.filteredCryptos]
+                .filter(c => c.change24h > 0)
+                .sort((a,b) => b.change24h - a.change24h)
+                .slice(0, 20);
+        } else if (this.currentQuick === 'losers') {
+            this.filteredCryptos = [...this.filteredCryptos]
+                .filter(c => c.change24h < 0)
+                .sort((a,b) => a.change24h - b.change24h)
+                .slice(0, 20);
+        } else if (this.currentQuick === 'trending') {
+            const trendScore = (c) => {
+                const s = c.sparkline;
+                if (!s || s.length < 2) return 0;
+                return (s[s.length-1] - s[0]) / s[0];
+            };
+            this.filteredCryptos = [...this.filteredCryptos]
+                .sort((a,b) => Math.abs(trendScore(b)) - Math.abs(trendScore(a)))
+                .slice(0, 20);
+        }
+
         // Sort
+        const dir = this.currentSortDir === 'asc' ? 1 : -1;
         this.filteredCryptos.sort((a, b) => {
             switch (this.currentSort) {
                 case 'marketCap':
-                    return b.marketCap - a.marketCap;
+                    return dir * (a.marketCap - b.marketCap);
                 case 'volume':
-                    return b.volume24h - a.volume24h;
+                    return dir * (a.volume24h - b.volume24h);
                 case 'price':
-                    return b.price - a.price;
+                    return dir * (a.price - b.price);
                 case 'change':
-                    return b.change24h - a.change24h;
+                    return dir * (a.change24h - b.change24h);
                 case 'name':
-                    return a.name.localeCompare(b.name);
+                    return dir * a.name.localeCompare(b.name);
+                case 'rank':
+                    return dir * (this.cryptocurrencies.indexOf(a) - this.cryptocurrencies.indexOf(b));
                 default:
                     return 0;
             }
@@ -308,6 +373,7 @@ class MarketsManager {
             this.renderGridView();
         }
         this.renderPagination();
+        this.updateHeaderSortIndicators();
     }
 
     renderTableView() {
@@ -317,8 +383,11 @@ class MarketsManager {
         const pageData = this.filteredCryptos.slice(startIndex, endIndex);
 
         tbody.innerHTML = pageData.map((crypto, index) => `
-            <tr onclick="marketsManager.showMarketDetail('${crypto.id}')">
-                <td class="rank">${startIndex + index + 1}</td>
+            <tr onclick=\"marketsManager.showMarketDetail('${crypto.id}')\">
+                <td class=\"fav-cell\" onclick=\"event.stopPropagation(); marketsManager.toggleFavorite('${crypto.id}')\" title=\"Toggle favorite\">
+                    <i class=\"fas fa-star ${this.isFavorite(crypto.id) ? 'fav-on' : 'fav-off'}\"></i>
+                </td>
+                <td class=\"rank\">${startIndex + index + 1}</td>
                 <td class="coin-info">
                     <div class="coin-icon" style="background: ${crypto.iconColor}; color: white;">
                         ${crypto.icon}
@@ -328,17 +397,15 @@ class MarketsManager {
                         <div class="coin-symbol">${crypto.symbol}</div>
                     </div>
                 </td>
-                <td class="price">$${crypto.price.toLocaleString()}</td>
-                <td class="change ${crypto.change24h >= 0 ? 'positive' : 'negative'}">
-                    ${crypto.change24h >= 0 ? '+' : ''}${crypto.change24h}%
-                </td>
-                <td class="volume">$${(crypto.volume24h / 1000000).toFixed(1)}M</td>
-                <td class="market-cap">$${(crypto.marketCap / 1000000000).toFixed(1)}B</td>
-                <td class="sparkline">
-                    <canvas id="sparkline-${crypto.id}" width="100" height="30"></canvas>
+                <td class=\"price\">$${crypto.price.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
+                <td class=\"change ${crypto.change24h >= 0 ? 'positive' : 'negative'}\">${crypto.change24h >= 0 ? '+' : ''}${crypto.change24h.toFixed(2)}%</td>
+                <td class=\"volume\">$${(crypto.volume24h / 1e9).toFixed(1)}B</td>
+                <td class=\"market-cap\">$${(crypto.marketCap / 1e9).toFixed(1)}B</td>
+                <td class=\"sparkline\">
+                    <canvas id=\"sparkline-${crypto.id}\" width=\"100\" height=\"30\"></canvas>
                 </td>
                 <td>
-                    <button class="action-btn" onclick="event.stopPropagation(); marketsManager.goToTrade('${crypto.symbol}USDT')">
+                    <button class=\"action-btn\" onclick=\"event.stopPropagation(); marketsManager.goToTrade('${crypto.symbol}USDT')\">
                         Trade
                     </button>
                 </td>
@@ -429,6 +496,41 @@ class MarketsManager {
         });
 
         ctx.stroke();
+    }
+
+    updateHeaderSortIndicators() {
+        document.querySelectorAll('.markets-table th.sortable').forEach(th => {
+            th.classList.remove('sorted-asc','sorted-desc');
+            if (th.dataset.sort === this.currentSort) {
+                th.classList.add(this.currentSortDir === 'asc' ? 'sorted-asc' : 'sorted-desc');
+            }
+        });
+    }
+
+    // Favorites helpers
+    loadFavorites() {
+        try {
+            const raw = localStorage.getItem('markets_favorites');
+            return raw ? JSON.parse(raw) : [];
+        } catch (e) { return []; }
+    }
+
+    saveFavorites() {
+        try { localStorage.setItem('markets_favorites', JSON.stringify(this.favorites)); } catch (e) {}
+    }
+
+    isFavorite(id) {
+        return this.favorites.includes(id);
+    }
+
+    toggleFavorite(id) {
+        if (this.isFavorite(id)) {
+            this.favorites = this.favorites.filter(x => x !== id);
+        } else {
+            this.favorites.push(id);
+        }
+        this.saveFavorites();
+        this.renderMarkets();
     }
 
     toggleView() {

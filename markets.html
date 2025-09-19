@@ -79,9 +79,13 @@
                     <div class="search-bar">
                         <i class="fas fa-search"></i>
                         <input type="text" id="searchInput" placeholder="Search cryptocurrencies...">
+                        <button class="search-clear" id="searchClear" aria-label="Clear search">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
                     <div class="filter-buttons">
                         <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="watchlist"><i class="fas fa-star"></i> Watchlist</button>
                         <button class="filter-btn" data-filter="defi">DeFi</button>
                         <button class="filter-btn" data-filter="nft">NFT</button>
                         <button class="filter-btn" data-filter="layer1">Layer 1</button>
@@ -96,6 +100,14 @@
                     <button class="tab-btn" data-tab="futures">Futures</button>
                     <button class="tab-btn" data-tab="margin">Margin</button>
                     <button class="tab-btn" data-tab="borrow">Borrow</button>
+                </div>
+
+                <!-- Overview Quick Filters -->
+                <div class="overview-filters">
+                    <button class="quick-btn active" data-quick="all">All</button>
+                    <button class="quick-btn" data-quick="gainers">Top Gainers</button>
+                    <button class="quick-btn" data-quick="losers">Top Losers</button>
+                    <button class="quick-btn" data-quick="trending">Trending</button>
                 </div>
 
                 <!-- Sort Controls -->
@@ -118,6 +130,10 @@
                             <i class="fas fa-th"></i>
                         </button>
                     </div>
+                    <div class="density-toggle" aria-label="Row density">
+                        <button class="density-btn active" data-density="comfortable">Comfort</button>
+                        <button class="density-btn" data-density="compact">Compact</button>
+                    </div>
                 </div>
 
                 <!-- Table View -->
@@ -126,12 +142,13 @@
                         <table class="markets-table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th class="fav-col" title="Watchlist"></th>
+                                    <th class="sortable" data-sort="rank">#</th>
                                     <th>Name</th>
-                                    <th>Price</th>
-                                    <th>24h Change</th>
-                                    <th>24h Volume</th>
-                                    <th>Market Cap</th>
+                                    <th class="sortable" data-sort="price">Price</th>
+                                    <th class="sortable" data-sort="change">24h Change</th>
+                                    <th class="sortable" data-sort="volume">24h Volume</th>
+                                    <th class="sortable" data-sort="marketCap">Market Cap</th>
                                     <th>7d Chart</th>
                                     <th>Action</th>
                                 </tr>
