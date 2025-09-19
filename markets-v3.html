@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markets Overview - v3</title>
+  <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/markets-v3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-top">
+        <div class="logo"><h1>Binance</h1></div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="markets-v3.html" class="nav-link active">Markets</a></li>
+            <li><a href="trade.html" class="nav-link">Trade</a></li>
+            <li><a href="futures.html" class="nav-link">Futures</a></li>
+            <li><a href="earn.html" class="nav-link">Earn</a></li>
+            <li><a href="wallet.html" class="nav-link">Wallet</a></li>
+            <li><a href="news.html" class="nav-link">News</a></li>
+            <li><a href="support.html" class="nav-link">Support</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button class="language-selector" type="button"><i class="fas fa-globe"></i><span>EN</span></button>
+          <button class="btn-login" type="button">Log In</button>
+          <button class="btn-register" type="button">Register</button>
+          <button class="btn-wallet" type="button" style="display:none"><i class="fas fa-user"></i> 我的</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- KPI -->
+  <section class="hero v3">
+    <div class="container">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-label">Total Market Cap</div><div id="v3Cap" class="kpi-value">$—</div></div>
+        <div class="kpi"><div class="kpi-label">24h Volume</div><div id="v3Vol" class="kpi-value">$—</div></div>
+        <div class="kpi"><div class="kpi-label">BTC Dominance</div><div id="v3Dom" class="kpi-value">—%</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky controls -->
+  <div class="sticky">
+    <div class="container">
+      <div class="row-1">
+        <div class="search">
+          <i class="fas fa-search"></i>
+          <input id="v3Search" type="text" placeholder="Search by name or symbol">
+          <button id="v3Clear" class="clear"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chips">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="watchlist"><i class="fas fa-star"></i> Watchlist</button>
+          <button class="chip" data-filter="defi">DeFi</button>
+          <button class="chip" data-filter="nft">NFT</button>
+          <button class="chip" data-filter="layer1">Layer 1</button>
+          <button class="chip" data-filter="layer2">Layer 2</button>
+          <button class="chip" data-filter="meme">Meme</button>
+        </div>
+        <div class="controls">
+          <div class="quote">
+            <span>Quote:</span>
+            <button class="q-btn active" data-quote="USD">USD</button>
+            <button class="q-btn" data-quote="USDT">USDT</button>
+            <button class="q-btn" data-quote="BTC">BTC</button>
+          </div>
+          <div class="density">
+            <button class="d-btn active" data-density="comfortable">Comfort</button>
+            <button class="d-btn" data-density="compact">Compact</button>
+          </div>
+          <div class="view">
+            <button class="v-btn active" data-view="table"><i class="fas fa-table"></i></button>
+            <button class="v-btn" data-view="grid"><i class="fas fa-th"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="quick">
+          <button class="qk active" data-quick="all">All</button>
+          <button class="qk" data-quick="gainers">Top Gainers</button>
+          <button class="qk" data-quick="losers">Top Losers</button>
+          <button class="qk" data-quick="trending">Trending</button>
+          <button class="qk" data-quick="new">New Listings</button>
+        </div>
+        <div class="tabs">
+          <button class="tab active" data-tab="spot">Spot</button>
+          <button class="tab" data-tab="futures">Futures</button>
+          <button class="tab" data-tab="margin">Margin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container v3">
+    <div id="v3TableWrap" class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="fav-col"></th>
+            <th class="s" data-sort="rank">#</th>
+            <th>Name</th>
+            <th class="s" data-sort="price">Last Price</th>
+            <th class="s" data-sort="change">24h %</th>
+            <th>24h Range</th>
+            <th class="s" data-sort="volume">24h Volume</th>
+            <th class="s" data-sort="marketCap">Market Cap</th>
+            <th>7d</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="v3Body"></tbody>
+      </table>
+    </div>
+
+    <div id="v3GridWrap" class="grid-wrap" style="display:none">
+      <div id="v3Grid" class="grid"></div>
+    </div>
+
+    <div class="pagination">
+      <button id="v3Prev" class="pg-btn"><i class="fas fa-chevron-left"></i></button>
+      <div id="v3Pages" class="pages"></div>
+      <button id="v3Next" class="pg-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/markets-v3.js"></script>
+</body>
+</html>
+
