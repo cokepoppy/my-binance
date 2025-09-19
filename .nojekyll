@@ -1,0 +1,1 @@
+# Disable Jekyll processing for GitHub Pages so assets in subfolders are served as-is.
