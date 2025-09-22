@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1E2329"/>
+      <stop offset="100%" stop-color="#0B0E11"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#g)"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" fill="#EAECEF">
+    <text x="60" y="110" font-size="48" font-weight="700">Earn Preview</text>
+    <text x="60" y="160" font-size="20" fill="#A7B1BC">Products · APY · Calculator</text>
+  </g>
+  <rect x="60" y="220" width="1080" height="320" rx="12" fill="#181A20" stroke="#2B3139"/>
+  <rect x="90" y="250" width="500" height="60" rx="10" fill="#2B3139"/>
+  <rect x="620" y="250" width="500" height="60" rx="10" fill="#2B3139"/>
+  <rect x="90" y="330" width="1030" height="190" rx="10" fill="#101418"/>
+  <circle cx="1050" cy="300" r="8" fill="#0ECB81"/>
+</svg>
+

@@ -8,6 +8,32 @@
 
 A high-fidelity Binance‑style web app built with vanilla HTML, CSS, and JavaScript. Open the live demo above to try it immediately.
 
+## 🔗 Quick Navigation (Pages)
+
+- Home: `index.html` — Overview, hero chart, market highlights
+- Markets: `markets-v3.html` — Filters, sorting, table/grid view with sparklines
+- Trade: `trade.html` — Chart, order book, recent trades, buy/sell forms
+- Futures: `futures-v2.html` — Perps overview, pair header, order panel, positions
+- Earn: `earn.html` — Product cards, APY, calculator, portfolio
+- Wallet: `wallet.html` — Balances, transfers, history
+- Support: `support.html` — Search, suggestions, FAQs, quick actions
+- News: `news.html` — Curated articles and categories
+- Test: `navigation_test.html` — Manual nav testing harness
+
+Tip: When served locally, visit `http://localhost:8080/<page-name>.html`.
+
+## 🖼️ Screenshots (Previews)
+
+Preview placeholders are included; replace with real screenshots anytime by overwriting files under `images/` with the same names.
+
+| Home | Markets | Trade |
+|---|---|---|
+| ![](images/preview-home.svg) | ![](images/preview-markets.svg) | ![](images/preview-trade.svg) |
+
+| Futures | Earn | Wallet | Support |
+|---|---|---|---|
+| ![](images/preview-futures.svg) | ![](images/preview-earn.svg) | ![](images/preview-wallet.svg) | ![](images/preview-support.svg) |
+
 ## 🚀 Features
 
 ### ✅ Completed Features
