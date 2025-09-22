@@ -112,6 +112,48 @@ class SupportEngine {
         this.setupSearch();
         this.setupLiveChat();
         this.startRealTimeUpdates();
+        this.animateHeroKpis();
+    }
+
+    animateHeroKpis() {
+        const nodes = document.querySelectorAll('[data-kpi]');
+        if (!nodes.length) return;
+        const duration = 900; // ms
+        const start = performance.now();
+
+        const fmtShort = (n) => {
+            const abs = Math.abs(n);
+            if (abs >= 1e9) return (n / 1e9).toFixed(1) + 'B';
+            if (abs >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+            if (abs >= 1e3) return (n / 1e3).toFixed(1) + 'K';
+            return Math.round(n).toString();
+        };
+
+        const fmtTime = (sec) => {
+            const s = Math.round(sec);
+            const m = Math.floor(s / 60);
+            const r = s % 60;
+            return `${m}m ${r}s`;
+        };
+
+        const step = (t) => {
+            const p = Math.min(1, (t - start) / duration);
+            const e = 1 - Math.pow(1 - p, 3); // ease-out
+            nodes.forEach(el => {
+                const target = parseFloat(el.dataset.target || '0');
+                const format = el.dataset.format || 'number';
+                const current = target * e;
+                if (format === 'number-short') {
+                    el.textContent = fmtShort(current);
+                } else if (format === 'time') {
+                    el.textContent = fmtTime(current);
+                } else {
+                    el.textContent = Math.round(current).toString();
+                }
+            });
+            if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
     }
 
     setupEventListeners() {
@@ -466,6 +508,16 @@ class SupportEngine {
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
                 this.performSearch(e.target.value);
+            });
+
+            // Suggestion chips: click to fill and search
+            document.addEventListener('click', (e) => {
+                const chip = e.target.closest('.suggestion-chip');
+                if (chip) {
+                    const term = chip.dataset.suggest || chip.textContent;
+                    searchInput.value = term;
+                    this.performSearch(term);
+                }
             });
         }
     }

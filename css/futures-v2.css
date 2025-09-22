@@ -1,0 +1,90 @@
+/* Futures v2 Landing Styles (Binance-style) */
+
+.futures-hero-v2 {
+    padding: var(--spacing-2xl) 0 var(--spacing-xl);
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hero-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--spacing-2xl); align-items: center; }
+.hero-text h2 { font-size: var(--font-size-4xl); font-weight: 700; margin-bottom: var(--spacing-md); }
+.hero-text p { color: var(--color-text-secondary); margin-bottom: var(--spacing-xl); font-size: var(--font-size-lg); }
+.hero-actions { display: flex; gap: var(--spacing-md); }
+
+.hero-stats-v2 { display: grid; grid-template-columns: repeat(4, minmax(180px, 1fr)); gap: var(--spacing-md); }
+.kpi-card { background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--spacing-lg); }
+.kpi-label { color: var(--color-text-secondary); font-size: 12px; margin-bottom: 6px; }
+.kpi-value { font-size: 24px; font-weight: 700; color: var(--color-text-primary); }
+.kpi-sub { color: var(--color-text-tertiary); font-size: 12px; margin-top: 6px; }
+
+/* Tabs */
+.tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--color-border); margin-top: var(--spacing-xl); }
+.tabs .tab { padding: 12px 16px; border: none; background: transparent; color: var(--color-text-secondary); cursor: pointer; }
+.tabs .tab.active { color: var(--color-primary); border-bottom: 2px solid var(--color-primary); }
+
+.futures-products { padding: var(--spacing-xl) 0 var(--spacing-2xl); }
+.tab-panels { margin-top: var(--spacing-lg); }
+.tab-panel { display: block; }
+.tab-panel[hidden] { display: none; }
+.panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--spacing-md); }
+.panel-head h3 { font-size: var(--font-size-2xl); font-weight: 700; }
+.panel-link { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+.panel-link:hover { color: var(--color-primary-hover); }
+
+/* Pairs table */
+.pairs-table-wrap { background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; }
+.pairs-table { width: 100%; border-collapse: collapse; }
+.pairs-table thead th { background: var(--color-bg-primary); color: var(--color-text-secondary); padding: 12px; font-size: 12px; text-align: left; border-bottom: 1px solid var(--color-border); }
+.pairs-table tbody td { padding: 12px; border-bottom: 1px solid var(--color-border); }
+.pairs-table tbody tr:nth-child(even) { background: var(--color-bg-primary); }
+.pairs-table .num { text-align: right; white-space: nowrap; }
+
+.pair-cell { display: flex; align-items: center; gap: 10px; }
+.pair-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--color-bg-tertiary); color: var(--color-primary); font-weight: 700; font-size: 12px; }
+.pair-name { font-weight: 700; color: var(--color-text-primary); }
+.pair-symbol { font-size: 12px; color: var(--color-text-secondary); }
+
+.chg { font-weight: 700; padding: 4px 10px; border-radius: 999px; border: 1px solid transparent; display: inline-block; }
+.chg.pos { color: var(--color-success); background: rgba(14,203,129,0.12); border-color: rgba(14,203,129,0.35); }
+.chg.neg { color: var(--color-danger); background: rgba(246,70,93,0.12); border-color: rgba(246,70,93,0.35); }
+
+.trade-btn { padding: 6px 10px; border: none; background: var(--color-primary); color: var(--color-bg-primary); border-radius: 8px; cursor: pointer; font-size: 12px; }
+
+/* Copy Trading */
+.copy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-lg); }
+.copy-card { background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--spacing-lg); display: flex; flex-direction: column; gap: var(--spacing-md); }
+.copy-head { display: flex; align-items: center; gap: var(--spacing-md); justify-content: space-between; }
+.copy-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--color-bg-tertiary); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-weight: 700; }
+.copy-name { font-weight: 700; }
+.copy-sub { font-size: 12px; color: var(--color-text-secondary); }
+.copy-roi { font-weight: 800; }
+.copy-roi.pos { color: var(--color-success); }
+.copy-roi.neg { color: var(--color-danger); }
+.copy-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); }
+.copy-stats .label { display: block; font-size: 12px; color: var(--color-text-secondary); }
+.copy-stats .value { font-weight: 700; }
+.btn-full { width: 100%; }
+
+/* Automation */
+.autom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--spacing-lg); }
+.autom-card { background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--spacing-lg); display: flex; flex-direction: column; gap: var(--spacing-md); }
+.autom-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--color-primary); color: var(--color-bg-primary); font-size: 18px; }
+
+/* Benefits */
+.futures-benefits { padding: var(--spacing-2xl) 0; background: var(--color-bg-secondary); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--spacing-xl); }
+.benefit-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--spacing-xl); text-align: left; transition: all var(--transition-fast); }
+.benefit-card:hover { transform: translateY(-4px); border-color: var(--color-primary); }
+.benefit-icon { width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--color-primary); color: var(--color-bg-primary); font-size: 20px; margin-bottom: var(--spacing-md); }
+.risk-note { margin-top: var(--spacing-xl); color: var(--color-text-secondary); font-size: 12px; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-wrap { grid-template-columns: 1fr; }
+  .hero-stats-v2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .hero-stats-v2 { grid-template-columns: 1fr; }
+}
+

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futures v2 – Binance‑style Landing</title>
+    <meta name="description" content="Binance Futures style landing: trade USDT‑M and COIN‑M perpetual contracts with deep liquidity and up to 125x leverage.">
+    <meta name="google-client-id" content="240275389988-ke3fpccnqktnpk93gct90q6g8f31d6vq.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/futures-v2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo"><h1>Binance</h1></div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="markets-v3.html" class="nav-link">Markets</a></li>
+                        <li><a href="trade.html" class="nav-link">Trade</a></li>
+                        <li><a href="futures-v2.html" class="nav-link active">Futures</a></li>
+                        <li><a href="earn.html" class="nav-link">Earn</a></li>
+                        <li><a href="wallet.html" class="nav-link">Wallet</a></li>
+                        <li><a href="news.html" class="nav-link">News</a></li>
+                        <li><a href="support.html" class="nav-link">Support</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="market-ticker" aria-label="BTC/USDT ticker">
+                        <span class="ticker-label">BTC/USDT</span>
+                        <span class="ticker-price">$43,256.78</span>
+                        <span class="ticker-change positive">+2.34%</span>
+                    </div>
+                    <button class="language-selector" type="button"><i class="fas fa-globe"></i><span>EN</span></button>
+                    <button class="btn-login" type="button">Log In</button>
+                    <button class="btn-register" type="button">Register</button>
+                    <button class="btn-wallet" type="button" style="display:none"><i class="fas fa-user"></i> 我的</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="futures-hero-v2">
+        <div class="container">
+            <div class="hero-wrap">
+                <div class="hero-text">
+                    <h2>Crypto Futures Trading</h2>
+                    <p>Trade USDT‑M and COIN‑M perpetual contracts with up to <strong>125x</strong> leverage. Deep liquidity, fast execution, and advanced risk controls.</p>
+                    <div class="hero-actions">
+                        <button class="btn-primary" type="button">Start Trading</button>
+                        <button class="btn-secondary" type="button">Register Now</button>
+                    </div>
+                </div>
+                <div class="hero-stats-v2" aria-label="Futures KPIs">
+                    <div class="kpi-card">
+                        <div class="kpi-label">24h Volume</div>
+                        <div class="kpi-value" data-kpi="volume">$0</div>
+                        <div class="kpi-sub">All perpetuals</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Open Interest</div>
+                        <div class="kpi-value" data-kpi="oi">$0</div>
+                        <div class="kpi-sub">Across major pairs</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Markets</div>
+                        <div class="kpi-value" data-kpi="markets">—</div>
+                        <div class="kpi-sub">USDT‑M & COIN‑M</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Max Leverage</div>
+                        <div class="kpi-value">125x</div>
+                        <div class="kpi-sub">Pair‑dependent</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Tabs -->
+    <section class="futures-products">
+        <div class="container">
+            <div class="tabs" role="tablist" aria-label="Futures products">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="panel-usdtm" id="tab-usdtm" data-tab="usdtm">USDT‑M Perpetual</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-coinm" id="tab-coinm" data-tab="coinm">COIN‑M Perpetual</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-copy" id="tab-copy" data-tab="copy">Copy Trading</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="panel-autom" id="tab-autom" data-tab="autom">Grid & Automation</button>
+            </div>
+
+            <div class="tab-panels">
+                <!-- USDT-M -->
+                <div class="tab-panel active" role="tabpanel" id="panel-usdtm" aria-labelledby="tab-usdtm">
+                    <div class="panel-head">
+                        <h3>USDT‑M Perpetual Markets</h3>
+                        <a class="panel-link" href="#" aria-label="View all USDT‑M markets">View all</a>
+                    </div>
+                    <div class="pairs-table-wrap">
+                        <table class="pairs-table">
+                            <thead>
+                                <tr>
+                                    <th>Pair</th>
+                                    <th class="num">Price</th>
+                                    <th class="num">24h</th>
+                                    <th class="num">Funding</th>
+                                    <th class="num">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usdtmBody">
+                                <tr>
+                                    <td>
+                                        <div class="pair-cell"><div class="pair-icon">B</div><div><div class="pair-name">BTC/USDT</div><div class="pair-symbol">Perpetual</div></div></div>
+                                    </td>
+                                    <td class="num" data-price>$43,256.78</td>
+                                    <td class="num"><span class="chg pos" data-chg>+2.34%</span></td>
+                                    <td class="num" data-funding>0.0100%</td>
+                                    <td class="num"><button class="trade-btn">Trade</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="pair-cell"><div class="pair-icon">E</div><div><div class="pair-name">ETH/USDT</div><div class="pair-symbol">Perpetual</div></div></div>
+                                    </td>
+                                    <td class="num" data-price>$2,365.12</td>
+                                    <td class="num"><span class="chg neg" data-chg>-0.58%</span></td>
+                                    <td class="num" data-funding>-0.0035%</td>
+                                    <td class="num"><button class="trade-btn">Trade</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="pair-cell"><div class="pair-icon">S</div><div><div class="pair-name">SOL/USDT</div><div class="pair-symbol">Perpetual</div></div></div>
+                                    </td>
+                                    <td class="num" data-price>$145.22</td>
+                                    <td class="num"><span class="chg pos" data-chg>+1.12%</span></td>
+                                    <td class="num" data-funding>0.0040%</td>
+                                    <td class="num"><button class="trade-btn">Trade</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- COIN-M -->
+                <div class="tab-panel" role="tabpanel" id="panel-coinm" aria-labelledby="tab-coinm" hidden>
+                    <div class="panel-head">
+                        <h3>COIN‑M Perpetual Markets</h3>
+                        <a class="panel-link" href="#">View all</a>
+                    </div>
+                    <div class="pairs-table-wrap">
+                        <table class="pairs-table">
+                            <thead>
+                                <tr>
+                                    <th>Pair</th>
+                                    <th class="num">Price</th>
+                                    <th class="num">24h</th>
+                                    <th class="num">Funding</th>
+                                    <th class="num">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="coinmBody">
+                                <tr>
+                                    <td>
+                                        <div class="pair-cell"><div class="pair-icon">B</div><div><div class="pair-name">BTC/USD</div><div class="pair-symbol">Perpetual</div></div></div>
+                                    </td>
+                                    <td class="num" data-price>$43,320.10</td>
+                                    <td class="num"><span class="chg pos" data-chg>+0.42%</span></td>
+                                    <td class="num" data-funding>0.0080%</td>
+                                    <td class="num"><button class="trade-btn">Trade</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="pair-cell"><div class="pair-icon">E</div><div><div class="pair-name">ETH/USD</div><div class="pair-symbol">Perpetual</div></div></div>
+                                    </td>
+                                    <td class="num" data-price>$2,372.45</td>
+                                    <td class="num"><span class="chg neg" data-chg>-0.22%</span></td>
+                                    <td class="num" data-funding>-0.0020%</td>
+                                    <td class="num"><button class="trade-btn">Trade</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Copy Trading -->
+                <div class="tab-panel" role="tabpanel" id="panel-copy" aria-labelledby="tab-copy" hidden>
+                    <div class="panel-head">
+                        <h3>Copy Trading</h3>
+                        <a class="panel-link" href="#">See top traders</a>
+                    </div>
+                    <div class="copy-grid">
+                        <div class="copy-card">
+                            <div class="copy-head">
+                                <div class="copy-avatar">A</div>
+                                <div>
+                                    <div class="copy-name">AlphaTrader</div>
+                                    <div class="copy-sub">ROI (30d)</div>
+                                </div>
+                                <div class="copy-roi pos">+124%</div>
+                            </div>
+                            <div class="copy-stats">
+                                <div><span class="label">Followers</span><span class="value">1,284</span></div>
+                                <div><span class="label">Win rate</span><span class="value">63%</span></div>
+                                <div><span class="label">Max DD</span><span class="value">-8.5%</span></div>
+                            </div>
+                            <button class="btn-primary btn-full" type="button">Copy</button>
+                        </div>
+                        <div class="copy-card">
+                            <div class="copy-head">
+                                <div class="copy-avatar">B</div>
+                                <div>
+                                    <div class="copy-name">BetaEdge</div>
+                                    <div class="copy-sub">ROI (30d)</div>
+                                </div>
+                                <div class="copy-roi neg">-4%</div>
+                            </div>
+                            <div class="copy-stats">
+                                <div><span class="label">Followers</span><span class="value">742</span></div>
+                                <div><span class="label">Win rate</span><span class="value">58%</span></div>
+                                <div><span class="label">Max DD</span><span class="value">-5.1%</span></div>
+                            </div>
+                            <button class="btn-secondary btn-full" type="button">View</button>
+                        </div>
+                        <div class="copy-card">
+                            <div class="copy-head">
+                                <div class="copy-avatar">C</div>
+                                <div>
+                                    <div class="copy-name">CryptoQuant</div>
+                                    <div class="copy-sub">ROI (30d)</div>
+                                </div>
+                                <div class="copy-roi pos">+42%</div>
+                            </div>
+                            <div class="copy-stats">
+                                <div><span class="label">Followers</span><span class="value">2,021</span></div>
+                                <div><span class="label">Win rate</span><span class="value">68%</span></div>
+                                <div><span class="label">Max DD</span><span class="value">-6.2%</span></div>
+                            </div>
+                            <button class="btn-primary btn-full" type="button">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automation -->
+                <div class="tab-panel" role="tabpanel" id="panel-autom" aria-labelledby="tab-autom" hidden>
+                    <div class="panel-head">
+                        <h3>Grid & Automation</h3>
+                        <a class="panel-link" href="#">Learn more</a>
+                    </div>
+                    <div class="autom-grid">
+                        <div class="autom-card">
+                            <div class="autom-icon"><i class="fas fa-border-all"></i></div>
+                            <h4>Grid Trading</h4>
+                            <p>Automate buy low, sell high with configurable grids and risk controls.</p>
+                            <button class="btn-secondary" type="button">Create Grid</button>
+                        </div>
+                        <div class="autom-card">
+                            <div class="autom-icon"><i class="fas fa-wave-square"></i></div>
+                            <h4>TWAP</h4>
+                            <p>Time‑weighted execution to minimize market impact for large orders.</p>
+                            <button class="btn-secondary" type="button">Set TWAP</button>
+                        </div>
+                        <div class="autom-card">
+                            <div class="autom-icon"><i class="fas fa-robot"></i></div>
+                            <h4>Signal Bot</h4>
+                            <p>Trigger orders based on moving averages or RSI in a few clicks.</p>
+                            <button class="btn-secondary" type="button">Start Bot</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="futures-benefits">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-gauge-high"></i></div>
+                    <h4>Fast Matching Engine</h4>
+                    <p>Low latency order matching designed for high‑frequency trading scenarios.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-water"></i></div>
+                    <h4>Deep Liquidity</h4>
+                    <p>Tight spreads and deep order books across top perpetual markets.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h4>Risk Controls</h4>
+                    <p>Auto‑deleverage and insurance funds help protect market stability.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-layer-group"></i></div>
+                    <h4>Multi‑Assets Mode</h4>
+                    <p>Collateralize across supported assets to optimize margin efficiency.</p>
+                </div>
+            </div>
+            <p class="risk-note">Futures trading involves significant risk and may result in loss of your capital. Please trade responsibly and do your own research.</p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h3>Ready to explore Binance‑style Futures?</h3>
+                <p>Open an account in under a minute and start with a demo balance.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" type="button">Start Trading</button>
+                    <button class="btn-secondary" type="button">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="markets-v3.html">Markets</a></li>
+                        <li><a href="trade.html">Spot Trading</a></li>
+                        <li><a href="futures-v2.html">Futures</a></li>
+                        <li><a href="earn.html">Earn</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="#">Fees</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="#">Academy</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo"><h2>Binance</h2></div>
+                <div class="footer-links">
+                    <span>© 2025 Binance Clone</span>
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/futures-v2.js"></script>
+</body>
+</html>
+

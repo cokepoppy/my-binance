@@ -23,7 +23,7 @@
                         <li><a href="index.html" class="nav-link">Home</a></li>
                         <li><a href="markets-v3.html" class="nav-link">Markets</a></li>
                         <li><a href="trade.html" class="nav-link">Trade</a></li>
-                        <li><a href="futures.html" class="nav-link">Futures</a></li>
+                        <li><a href="futures-v2.html" class="nav-link">Futures</a></li>
                         <li><a href="earn.html" class="nav-link active">Earn</a></li>
                         <li><a href="wallet.html" class="nav-link">Wallet</a></li>
                         <li><a href="news.html" class="nav-link">News</a></li>
@@ -48,22 +48,40 @@
     <!-- Earn Hero Section -->
     <section class="earn-hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Earn Crypto Rewards</h1>
-                <p>Stake, lend, and earn passive income with your crypto assets</p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-label">Total Value Locked</span>
-                        <span class="stat-value">$45.2B</span>
+            <div class="hero-wrap">
+                <div class="hero-left">
+                    <h1 class="hero-title">Earn Crypto Rewards</h1>
+                    <p class="hero-subtitle">Stake, lend, and earn passive income with your crypto assets</p>
+                    <div class="hero-chips" aria-label="earn features">
+                        <span class="chip">Flexible</span>
+                        <span class="chip">Locked</span>
+                        <span class="chip">Auto‑Subscribe</span>
+                        <span class="chip">Redeem Anytime</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Active Earners</span>
-                        <span class="stat-value">1.2M</span>
+                    <div class="hero-actions">
+                        <button class="btn-primary" type="button">Start Earning</button>
+                        <button class="btn-secondary" type="button">Explore Products</button>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Avg. APY</span>
-                        <span class="stat-value">8.5%</span>
+                </div>
+                <div class="hero-right" aria-label="earn kpis">
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-icon"><i class="fas fa-piggy-bank"></i></div>
+                            <div class="kpi-label">Total Value Locked</div>
+                            <div class="kpi-value" data-kpi="tvl" data-target="45200000000" data-format="currency-short">$45.2B</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon"><i class="fas fa-users"></i></div>
+                            <div class="kpi-label">Active Earners</div>
+                            <div class="kpi-value" data-kpi="earners" data-target="1200000" data-format="number-short">1.2M</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="kpi-label">Avg. APY</div>
+                            <div class="kpi-value positive" data-kpi="apy" data-target="8.5" data-format="percent">8.5%</div>
+                        </div>
                     </div>
+                    <div class="hero-note">Secure by design • Funds segregated • Risk‑aware products</div>
                 </div>
             </div>
         </div>

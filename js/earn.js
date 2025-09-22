@@ -159,6 +159,41 @@ class EarnEngine {
         this.renderPortfolio();
         this.startRealTimeUpdates();
         this.setupCalculator();
+        this.animateHeroKpis();
+    }
+
+    animateHeroKpis() {
+        const nodes = document.querySelectorAll('[data-kpi]');
+        if (!nodes.length) return;
+        const duration = 900; // ms
+        const start = performance.now();
+
+        const fmtShort = (n) => {
+            const abs = Math.abs(n);
+            if (abs >= 1e9) return (n / 1e9).toFixed(1) + 'B';
+            if (abs >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+            if (abs >= 1e3) return (n / 1e3).toFixed(1) + 'K';
+            return Math.round(n).toString();
+        };
+
+        const step = (t) => {
+            const p = Math.min(1, (t - start) / duration);
+            const e = 1 - Math.pow(1 - p, 3); // ease-out
+            nodes.forEach(el => {
+                const target = parseFloat(el.dataset.target || '0');
+                const format = el.dataset.format || 'number-short';
+                const current = target * e;
+                if (format === 'currency-short') {
+                    el.textContent = '$' + fmtShort(current);
+                } else if (format === 'percent') {
+                    el.textContent = (current).toFixed(1) + '%';
+                } else {
+                    el.textContent = fmtShort(current);
+                }
+            });
+            if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
     }
 
     setupEventListeners() {
