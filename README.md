@@ -1,6 +1,12 @@
 # My Binance - Cryptocurrency Exchange Clone
 
-A high-fidelity clone of the Binance cryptocurrency exchange homepage, built with vanilla HTML, CSS, and JavaScript.
+> 在线体验（Live Demo）
+>
+> https://cokepoppy.github.io/my-binance
+>
+> 打开即可体验站点的 Markets、Trade、Futures、Earn、Wallet、Support 等页面（纯前端静态站点，无需登录与后端）。
+
+A high-fidelity Binance‑style web app built with vanilla HTML, CSS, and JavaScript. Open the live demo above to try it immediately.
 
 ## 🚀 Features
 
